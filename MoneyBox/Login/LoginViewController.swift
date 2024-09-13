@@ -13,7 +13,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .primaryBackground
         
         setupView()
         setupLayout()
@@ -58,6 +58,39 @@ class LoginViewController: UIViewController {
         field.translatesAutoresizingMaskIntoConstraints = false
         return field
     }()
+    
+    private let forgottenPassButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Forgotten password?", for: .normal)
+        button.setTitleColor(.accent, for: .normal)
+        button.titleLabel?.font = .preferredFont(forTextStyle: .body)
+        button.backgroundColor = .clear
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    // TODO: Make reusable for other stylised buttons
+    private let loginButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Log in", for: .normal)
+        // TODO: Make faded for incorrectly populated fields
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = .preferredFont(forTextStyle: .body)
+        button.backgroundColor = .accent
+        button.layer.cornerRadius = 8
+        
+        button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+}
+
+extension LoginViewController {
+    @objc func loginButtonTapped() {
+        // TODO: Implement authentication call
+        print("Login button tapped")
+    }
 }
 
 extension LoginViewController {
@@ -67,6 +100,8 @@ extension LoginViewController {
         view.addSubview(emailTextField)
         view.addSubview(passLabel)
         view.addSubview(passTextField)
+        view.addSubview(forgottenPassButton)
+        view.addSubview(loginButton)
     }
 }
 
@@ -77,21 +112,26 @@ extension LoginViewController {
             logoView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
             logoView.heightAnchor.constraint(equalToConstant: 100),
             
-            emailLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             emailLabel.topAnchor.constraint(equalTo: logoView.bottomAnchor, constant: 50),
-            emailLabel.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -20),
+            emailLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
             
             emailTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            emailTextField.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: 20),
-            emailTextField.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -20),
+            emailTextField.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: 5),
+            emailTextField.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -30),
             
-            passLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            passLabel.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 50),
-            passLabel.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -20),
+            passLabel.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 30),
+            passLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
             
             passTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            passTextField.topAnchor.constraint(equalTo: passLabel.bottomAnchor, constant: 20),
-            passTextField.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -20)
+            passTextField.topAnchor.constraint(equalTo: passLabel.bottomAnchor, constant: 5),
+            passTextField.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -30),
+            
+            forgottenPassButton.topAnchor.constraint(equalTo: passTextField.bottomAnchor, constant: 5),
+            forgottenPassButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+            
+            loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loginButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
+            loginButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -30)
         ])
     }
 }
