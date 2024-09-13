@@ -109,7 +109,7 @@ extension LoginViewController {
     func setupLayout() {
         NSLayoutConstraint.activate([
             logoView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            logoView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
+            logoView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
             logoView.heightAnchor.constraint(equalToConstant: 100),
             
             emailLabel.topAnchor.constraint(equalTo: logoView.bottomAnchor, constant: 50),
@@ -130,7 +130,7 @@ extension LoginViewController {
             forgottenPassButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
             
             loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            loginButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
+            loginButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
             loginButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -30)
         ])
     }
