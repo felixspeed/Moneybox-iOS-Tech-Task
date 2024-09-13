@@ -1,11 +1,12 @@
 import UIKit
 
 class Coordinator {
+    var parent: Coordinator?
     var children: [Coordinator] = []
-    var root: UINavigationController
+    var navigationController: UINavigationController
     
-    init(root: UINavigationController) {
-        self.root = root
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
     }
     
     func addChild(_ coordinator: Coordinator) {
@@ -18,6 +19,10 @@ class Coordinator {
     }
     
     func start() {
+        preconditionFailure("Method requires overwrite")
+    }
+    
+    func finish() {
         preconditionFailure("Method requires overwrite")
     }
 }

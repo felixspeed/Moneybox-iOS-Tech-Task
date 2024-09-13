@@ -12,6 +12,6 @@ extension LoginCoordinator {
         let loginViewController = LoginViewController()
         let loginViewModel = LoginViewModel()
         loginViewController.loginViewModel = loginViewModel
-        root.pushViewController(loginViewController, animated: true)
+        navigationController.pushViewController(loginViewController, animated: true)
     }
 }
