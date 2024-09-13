@@ -16,3 +16,11 @@ extension AppCoordinator {
         loginCoordinator.start()
     }
 }
+
+
+extension AppCoordinator: LoginCoordinatorDelegate {
+    func delegateFinish(_ coordinator: Coordinator) {
+        // TODO: Login finished so go to home page  { navToHome() }
+        removeChild(coordinator)
+    }
+}

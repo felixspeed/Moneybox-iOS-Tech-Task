@@ -8,6 +8,7 @@
 import UIKit
 
 class LoginViewController: UIViewController {
+    
     var loginViewModel: LoginViewModel!
     
     override func viewDidLoad() {
