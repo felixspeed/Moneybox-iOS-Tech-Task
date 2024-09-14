@@ -1,12 +1,18 @@
 import UIKit
 
-protocol LoginCoordinatorDelegate {
+protocol LoginCoordinatorDelegate: AnyObject {
     func delegateFinish(_ coordinator: LoginCoordinator)
 }
 
 class LoginCoordinator: Coordinator {
     
-    var delegate: LoginCoordinatorDelegate?
+    private let navigationController: UINavigationController
+    private var delegate: LoginCoordinatorDelegate?
+    
+    init(navigationController: UINavigationController, delegate: LoginCoordinatorDelegate) {
+        self.navigationController = navigationController
+        self.delegate = delegate
+    }
     
     override func start() {
         displayLogin()

@@ -1,13 +1,7 @@
 import UIKit
 
 class Coordinator {
-    var parent: Coordinator?
     var children: [Coordinator] = []
-    var navigationController: UINavigationController
-    
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
-    }
     
     func addChild(_ coordinator: Coordinator) {
         children.append(coordinator)

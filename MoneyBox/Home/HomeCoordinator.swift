@@ -1,12 +1,19 @@
 import UIKit
 
-protocol HomeCoordinatorDelegate {
+protocol HomeCoordinatorDelegate: AnyObject {
     func delegateFinish(_ coordinator: HomeCoordinator)
 }
 
 class HomeCoordinator: Coordinator {
     
-    var delegate: HomeCoordinatorDelegate?
+    
+    private let navigationController: UINavigationController
+    private var delegate: HomeCoordinatorDelegate?
+    
+    init(navigationController: UINavigationController, delegate: HomeCoordinatorDelegate) {
+        self.navigationController = navigationController
+        self.delegate = delegate
+    }
     
     override func start() {
         displayHome()
