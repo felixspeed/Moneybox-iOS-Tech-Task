@@ -87,9 +87,9 @@
 		7F20E84E2C933F310066840D /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				B228EA692880B30B00B35F16 /* LoginViewController.swift */,
 				7F20E85A2C934E580066840D /* LoginCoordinator.swift */,
 				7F20E8722C947A400066840D /* LoginTextField.swift */,
+				B228EA692880B30B00B35F16 /* LoginViewController.swift */,
 				7F20E85F2C9356050066840D /* LoginViewModel.swift */,
 			);
 			path = Login;
@@ -98,9 +98,9 @@
 		7F20E84F2C933F350066840D /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				7F20E8642C9358720066840D /* HomeViewModel.swift */,
 				7F20E8662C93587C0066840D /* HomeCoordinator.swift */,
 				7F20E8612C9358240066840D /* HomeViewController.swift */,
+				7F20E8642C9358720066840D /* HomeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
