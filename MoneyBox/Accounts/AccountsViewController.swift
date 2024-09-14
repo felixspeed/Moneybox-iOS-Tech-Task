@@ -1,5 +1,5 @@
 import UIKit
 
-class AccountsViewController {
+class AccountsViewController: UIViewController {
     
 }

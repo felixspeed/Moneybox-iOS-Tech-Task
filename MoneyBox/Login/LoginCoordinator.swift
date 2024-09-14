@@ -1,7 +1,7 @@
 import UIKit
 
 protocol LoginCoordinatorDelegate {
-    func delegateFinish(_ coordinator: Coordinator)
+    func delegateFinish(_ coordinator: LoginCoordinator)
 }
 
 class LoginCoordinator: Coordinator {

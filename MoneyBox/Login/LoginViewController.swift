@@ -73,11 +73,13 @@ class LoginViewController: UIViewController {
     private let loginButton: UIButton = {
         let button = UIButton()
         button.setTitle("Log in", for: .normal)
-        // TODO: Make faded for incorrectly populated fields
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .preferredFont(forTextStyle: .body)
         button.backgroundColor = .accent
         button.layer.cornerRadius = 8
+        // TODO: Add logic for incorrectly populated fields
+        button.layer.opacity = button.isEnabled ? 1.0 : 0.2
+        
         
         button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         
@@ -88,8 +90,8 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController {
     @objc func loginButtonTapped() {
-        // TODO: Implement authentication call
-        print("Login button tapped")
+        guard let email = emailTextField.text, let pass = passTextField.text else { return }
+        loginViewModel?.auth(email: email, pass: pass)
     }
 }
 
@@ -134,6 +136,10 @@ extension LoginViewController {
             loginButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -30)
         ])
     }
+}
+
+extension LoginViewController: LoginViewModelDelegate {
+    
 }
 
 

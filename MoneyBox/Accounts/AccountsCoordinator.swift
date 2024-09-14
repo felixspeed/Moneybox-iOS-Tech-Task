@@ -1,5 +1,5 @@
 import UIKit
 
-class AccountsCoordinator {
+class AccountsCoordinator: Coordinator {
     
 }
