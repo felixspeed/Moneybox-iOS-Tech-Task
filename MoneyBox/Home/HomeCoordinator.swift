@@ -31,6 +31,6 @@ extension HomeCoordinator {
         let homeViewModel = HomeViewModel()
         homeViewModel.coordinator = self
         homeViewController.homeViewModel = homeViewModel
-        navigationController.pushViewController(homeViewController, animated: true)
+        navigationController.viewControllers = [homeViewController]
     }
 }
