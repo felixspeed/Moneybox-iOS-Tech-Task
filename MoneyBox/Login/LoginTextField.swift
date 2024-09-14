@@ -18,6 +18,7 @@ class LoginTextField: UITextField {
     }
     
     func setupTextField(isPassword: Bool) {
+        tag = isPassword ? 1 : 0
         backgroundColor = .primaryBackground
         isSecureTextEntry = isPassword
         returnKeyType = isPassword ? .done : .next

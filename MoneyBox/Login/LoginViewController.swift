@@ -17,6 +17,7 @@ class LoginViewController: UIViewController {
         
         setupView()
         setupLayout()
+        configureTextFieldDelegate()
     }
     
     private let logoView: UIImageView = {
@@ -92,6 +93,27 @@ extension LoginViewController {
     @objc func loginButtonTapped() {
         guard let email = emailTextField.text, let pass = passTextField.text else { return }
         loginViewModel?.auth(email: email, pass: pass)
+    }
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    func configureTextFieldDelegate() {
+        emailTextField.delegate = self
+        passTextField.delegate = self
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print(textField.tag)
+        switch textField.tag {
+        case 0:
+            passTextField.becomeFirstResponder()
+        case 1:
+            passTextField.resignFirstResponder()
+            loginButtonTapped()
+        default:
+            break
+        }
+        return false
     }
 }
 
