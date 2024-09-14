@@ -21,11 +21,6 @@ class LoginViewModel {
         
         // TODO: Verify email is valid
         
-        
-        #if DEBUG
-        print("test")
-        #endif
-        
         let request = LoginRequest(email: email, password: pass)
         dataProvider.login(request: request) { result in
             switch result {

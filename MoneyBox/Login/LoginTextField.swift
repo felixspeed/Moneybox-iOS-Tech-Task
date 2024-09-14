@@ -18,6 +18,10 @@ class LoginTextField: UITextField {
     }
     
     func setupTextField(isPassword: Bool) {
+        /* 
+        Explicitly defining the tag like this isn't ideal,
+        ideally set up as an enum but functional for now
+        */
         tag = isPassword ? 1 : 0
         backgroundColor = .primaryBackground
         isSecureTextEntry = isPassword

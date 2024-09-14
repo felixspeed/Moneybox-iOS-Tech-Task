@@ -17,7 +17,7 @@ class LoginViewController: UIViewController {
         
         setupView()
         setupLayout()
-        configureTextFieldDelegate()
+        configureTextFields()
     }
     
     private let logoView: UIImageView = {
@@ -97,13 +97,19 @@ extension LoginViewController {
 }
 
 extension LoginViewController: UITextFieldDelegate {
-    func configureTextFieldDelegate() {
+    func configureTextFields() {
         emailTextField.delegate = self
         passTextField.delegate = self
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(screenTapped))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func screenTapped() {
+        view.endEditing(true)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print(textField.tag)
         switch textField.tag {
         case 0:
             passTextField.becomeFirstResponder()
