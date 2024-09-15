@@ -30,7 +30,6 @@ extension AccountsCoordinator {
         let accountsViewModel = AccountsViewModel()
         accountsViewModel.coordinator = self
         accountsViewController.accountsViewModel = accountsViewModel
-        accountsViewModel.getAccounts()
         navigationController.viewControllers = [accountsViewController]
     }
 }

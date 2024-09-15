@@ -8,10 +8,12 @@ class LoginViewModel {
     var coordinator: LoginCoordinator?
     
     private let dataProvider: DataProviderLogic
+    private let tokenSessionManager: TokenSessionManager
     private let userModel: UserDefaultsHelper
     
     init() {
         self.dataProvider = DataProvider()
+        self.tokenSessionManager = TokenSessionManager.shared
         self.userModel = UserDefaults.standard
     }
     
@@ -52,8 +54,7 @@ class LoginViewModel {
     }
     
     func loginSuccessful(response: LoginResponse) {
-        // TODO: Store token
-        
+        tokenSessionManager.setUserToken(response.session.bearerToken)
         
         let user = response.user
         userModel.saveUser(user)

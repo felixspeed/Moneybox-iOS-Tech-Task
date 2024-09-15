@@ -4,6 +4,11 @@ class AccountsViewController: UIViewController {
     
     var accountsViewModel: AccountsViewModel?
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        accountsViewModel?.getAccounts()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .primaryBackground
@@ -22,17 +27,10 @@ class AccountsViewController: UIViewController {
     
     private let contentView: UIView = {
         let content = UIView()
-        content.backgroundColor = .primaryBackground
+        content.backgroundColor = .red
         content.translatesAutoresizingMaskIntoConstraints = false
         return content
     }()
-    
-//    lazy private var accountsViews: [UIView] = {
-//        var views: [UIView] = []
-//        for account in accountsViewModel?.accounts {
-//            
-//        }
-//    }
     
     lazy private var logoutButton: UIBarButtonItem = {
         return UIBarButtonItem(

@@ -18,7 +18,8 @@ public struct LoginResponse: Decodable {
     }
     
     public struct Session: Decodable {
-        let bearerToken: String
+        // Changed to public for token saving within SessionManager
+        public let bearerToken: String
         
         enum CodingKeys: String, CodingKey {
             case bearerToken = "BearerToken"
