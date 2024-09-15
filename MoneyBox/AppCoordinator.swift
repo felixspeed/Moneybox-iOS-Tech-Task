@@ -26,22 +26,22 @@ extension AppCoordinator {
         
     }
     
-    func navToHome() {
-        let homeCoordinator = HomeCoordinator(navigationController: navigationController, delegate: self)
-        navTo(homeCoordinator)
+    func navToAccounts() {
+        let accountsCoordinator = AccountsCoordinator(navigationController: navigationController, delegate: self)
+        navTo(accountsCoordinator)
     }
 }
 
 
 extension AppCoordinator: LoginCoordinatorDelegate {
     func delegateFinish(_ coordinator: LoginCoordinator) {
-        navToHome()
+        navToAccounts()
         removeChild(coordinator)
     }
 }
 
-extension AppCoordinator: HomeCoordinatorDelegate {
-    func delegateFinish(_ coordinator: HomeCoordinator) {
+extension AppCoordinator: AccountsCoordinatorDelegate {
+    func delegateFinish(_ coordinator: AccountsCoordinator) {
         navToLogin()
         removeChild(coordinator)
     }

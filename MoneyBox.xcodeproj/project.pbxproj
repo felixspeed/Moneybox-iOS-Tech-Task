@@ -12,12 +12,9 @@
 		7F20E85B2C934E580066840D /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E85A2C934E580066840D /* LoginCoordinator.swift */; };
 		7F20E85E2C9350220066840D /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E85D2C9350220066840D /* Coordinator.swift */; };
 		7F20E8602C9356050066840D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E85F2C9356050066840D /* LoginViewModel.swift */; };
-		7F20E8622C9358240066840D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E8612C9358240066840D /* HomeViewController.swift */; };
-		7F20E8652C9358720066840D /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E8642C9358720066840D /* HomeViewModel.swift */; };
-		7F20E8672C93587C0066840D /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E8662C93587C0066840D /* HomeCoordinator.swift */; };
-		7F20E86A2C935A4A0066840D /* AccountsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E8692C935A4A0066840D /* AccountsViewModel.swift */; };
-		7F20E86C2C935A5D0066840D /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E86B2C935A5D0066840D /* AccountsViewController.swift */; };
-		7F20E86E2C935A680066840D /* AccountsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E86D2C935A680066840D /* AccountsCoordinator.swift */; };
+		7F20E8622C9358240066840D /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E8612C9358240066840D /* AccountsViewController.swift */; };
+		7F20E8652C9358720066840D /* AccountsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E8642C9358720066840D /* AccountsViewModel.swift */; };
+		7F20E8672C93587C0066840D /* AccountsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E8662C93587C0066840D /* AccountsCoordinator.swift */; };
 		7F20E8732C947A400066840D /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E8722C947A400066840D /* LoginTextField.swift */; };
 		7F20E87A2C96FD500066840D /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E8792C96FD500066840D /* LoginError.swift */; };
 		7F20E87D2C96FFD90066840D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E87C2C96FFD90066840D /* User.swift */; };
@@ -47,12 +44,9 @@
 		7F20E85A2C934E580066840D /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		7F20E85D2C9350220066840D /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		7F20E85F2C9356050066840D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		7F20E8612C9358240066840D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		7F20E8642C9358720066840D /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = SOURCE_ROOT; };
-		7F20E8662C93587C0066840D /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
-		7F20E8692C935A4A0066840D /* AccountsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewModel.swift; sourceTree = "<group>"; };
-		7F20E86B2C935A5D0066840D /* AccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewController.swift; sourceTree = "<group>"; };
-		7F20E86D2C935A680066840D /* AccountsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsCoordinator.swift; sourceTree = "<group>"; };
+		7F20E8612C9358240066840D /* AccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewController.swift; sourceTree = "<group>"; };
+		7F20E8642C9358720066840D /* AccountsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewModel.swift; sourceTree = SOURCE_ROOT; };
+		7F20E8662C93587C0066840D /* AccountsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsCoordinator.swift; sourceTree = "<group>"; };
 		7F20E8702C94642A0066840D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = MoneyBox/Info.plist; sourceTree = "<group>"; };
 		7F20E8722C947A400066840D /* LoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
 		7F20E8792C96FD500066840D /* LoginError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
@@ -100,14 +94,14 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		7F20E84F2C933F350066840D /* Home */ = {
+		7F20E84F2C933F350066840D /* Accounts */ = {
 			isa = PBXGroup;
 			children = (
-				7F20E8662C93587C0066840D /* HomeCoordinator.swift */,
-				7F20E8612C9358240066840D /* HomeViewController.swift */,
-				7F20E8642C9358720066840D /* HomeViewModel.swift */,
+				7F20E8662C93587C0066840D /* AccountsCoordinator.swift */,
+				7F20E8612C9358240066840D /* AccountsViewController.swift */,
+				7F20E8642C9358720066840D /* AccountsViewModel.swift */,
 			);
-			path = Home;
+			path = Accounts;
 			sourceTree = "<group>";
 		};
 		7F20E8562C934DF70066840D /* Extensions */ = {
@@ -116,16 +110,6 @@
 				7F20E8572C934E0B0066840D /* UIColor+Extension.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		7F20E8682C935A3A0066840D /* Accounts */ = {
-			isa = PBXGroup;
-			children = (
-				7F20E8692C935A4A0066840D /* AccountsViewModel.swift */,
-				7F20E86B2C935A5D0066840D /* AccountsViewController.swift */,
-				7F20E86D2C935A680066840D /* AccountsCoordinator.swift */,
-			);
-			path = Accounts;
 			sourceTree = "<group>";
 		};
 		7F20E87B2C96FFD10066840D /* Helpers */ = {
@@ -164,10 +148,9 @@
 				7F20E8542C9346370066840D /* AppCoordinator.swift */,
 				B2CA46CB279350880041B3A5 /* AppDelegate.swift */,
 				7F20E85D2C9350220066840D /* Coordinator.swift */,
-				7F20E8682C935A3A0066840D /* Accounts */,
 				7F20E8562C934DF70066840D /* Extensions */,
 				7F20E87B2C96FFD10066840D /* Helpers */,
-				7F20E84F2C933F350066840D /* Home */,
+				7F20E84F2C933F350066840D /* Accounts */,
 				7F20E84E2C933F310066840D /* Login */,
 			);
 			path = MoneyBox;
@@ -307,19 +290,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F20E8552C9346370066840D /* AppCoordinator.swift in Sources */,
-				7F20E8652C9358720066840D /* HomeViewModel.swift in Sources */,
+				7F20E8652C9358720066840D /* AccountsViewModel.swift in Sources */,
 				7F20E87A2C96FD500066840D /* LoginError.swift in Sources */,
 				B2CA46CC279350880041B3A5 /* AppDelegate.swift in Sources */,
 				7F20E87D2C96FFD90066840D /* User.swift in Sources */,
 				7F20E85E2C9350220066840D /* Coordinator.swift in Sources */,
-				7F20E86A2C935A4A0066840D /* AccountsViewModel.swift in Sources */,
-				7F20E8622C9358240066840D /* HomeViewController.swift in Sources */,
+				7F20E8622C9358240066840D /* AccountsViewController.swift in Sources */,
 				7F20E85B2C934E580066840D /* LoginCoordinator.swift in Sources */,
 				B228EA6B2880B30B00B35F16 /* LoginViewController.swift in Sources */,
-				7F20E86E2C935A680066840D /* AccountsCoordinator.swift in Sources */,
-				7F20E8672C93587C0066840D /* HomeCoordinator.swift in Sources */,
+				7F20E8672C93587C0066840D /* AccountsCoordinator.swift in Sources */,
 				7F20E8582C934E0B0066840D /* UIColor+Extension.swift in Sources */,
-				7F20E86C2C935A5D0066840D /* AccountsViewController.swift in Sources */,
 				7F20E8602C9356050066840D /* LoginViewModel.swift in Sources */,
 				7F20E8732C947A400066840D /* LoginTextField.swift in Sources */,
 			);
