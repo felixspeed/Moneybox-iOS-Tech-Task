@@ -11,17 +11,19 @@ class LoginViewModel {
     var coordinator: LoginCoordinator?
     var delegate: LoginViewModelDelegate?
     
-    private var dataProvider: DataProviderLogic
+    private let dataProvider: DataProviderLogic
+    private let userModel: UserDefaultsHelper
     
     init() {
         self.dataProvider = DataProvider()
+        self.userModel = UserDefaults.standard
     }
     
     func auth(email: String?, pass: String?) {
-//        #if DEBUG
-//        let email: String? = "test+ios@moneyboxapp.com"
-//        let pass: String? = "P455word12"
-//        #endif
+        #if DEBUG
+        let email: String? = "test+ios@moneyboxapp.com"
+        let pass: String? = "P455word12"
+        #endif
         
         guard let email, let pass else { return }
         
@@ -39,7 +41,7 @@ class LoginViewModel {
             case .success(let success):
                 self.loginSuccessful(response: success)
             case .failure(let failure):
-                // TODO: Handle error and display to user through delegate
+                // TODO: Handle failure and display to user through delegate
                 print("Login failed")
             }
         }
@@ -55,6 +57,11 @@ class LoginViewModel {
     
     func loginSuccessful(response: LoginResponse) {
         // TODO: Store token
+        
+        
+        let user = response.user
+        userModel.saveUser(user)
+        
         coordinator?.finish()
     }
     
