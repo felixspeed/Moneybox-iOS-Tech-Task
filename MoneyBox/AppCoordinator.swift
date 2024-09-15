@@ -42,7 +42,8 @@ extension AppCoordinator: LoginCoordinatorDelegate {
 
 extension AppCoordinator: HomeCoordinatorDelegate {
     func delegateFinish(_ coordinator: HomeCoordinator) {
-        print("Home Finished")
+        navToLogin()
+        removeChild(coordinator)
     }
 }
 

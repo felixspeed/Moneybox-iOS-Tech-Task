@@ -165,9 +165,3 @@ extension LoginViewController {
         ])
     }
 }
-
-extension LoginViewController: LoginViewModelDelegate {
-    
-}
-
-

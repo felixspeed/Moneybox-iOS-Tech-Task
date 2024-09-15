@@ -2,14 +2,10 @@ import UIKit
 import Networking
 import Foundation
 
-protocol LoginViewModelDelegate {
-    
-}
 
 class LoginViewModel {
     
     var coordinator: LoginCoordinator?
-    var delegate: LoginViewModelDelegate?
     
     private let dataProvider: DataProviderLogic
     private let userModel: UserDefaultsHelper

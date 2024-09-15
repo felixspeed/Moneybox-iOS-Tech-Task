@@ -8,6 +8,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .primaryBackground
         
+        setupNavBar()
         setupView()
         setupLayout()
     }
@@ -20,9 +21,46 @@ class HomeViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+    lazy private var logoutButton: UIBarButtonItem = {
+        return UIBarButtonItem(
+            image: UIImage(systemName: "person.slash"),
+            style: .plain,
+            target: self,
+            action: #selector(logoutButtonTapped)
+        )
+    }()
 }
 
 extension HomeViewController {
+    @objc func logoutButtonTapped() {
+        let alert = UIAlertController(
+            title: "Are you sure you want to log out?",
+            message: nil,
+            preferredStyle: .actionSheet
+        )
+        alert.addAction(UIAlertAction(
+            title: "Cancel",
+            style: .cancel,
+            handler: nil
+        ))
+        alert.addAction(UIAlertAction(
+            title: "Logout",
+            style: .destructive,
+            handler: { UIAlertAction in
+                self.homeViewModel?.logout()
+            }
+        ))
+        self.present(alert, animated: true, completion: nil)
+    }
+}
+
+extension HomeViewController {
+    func setupNavBar() {
+        navigationItem.title = "Home"
+        navigationItem.leftBarButtonItem = logoutButton
+    }
+    
     func setupView() {
         view.addSubview(homeTitle)
     }
