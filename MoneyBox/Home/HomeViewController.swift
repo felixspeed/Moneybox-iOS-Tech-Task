@@ -13,13 +13,18 @@ class HomeViewController: UIViewController {
         setupLayout()
     }
     
-    private var homeTitle: UILabel = {
-        let label = UILabel()
-        label.text = "Test Home"
-        label.textColor = .accent
-        label.font = .preferredFont(forTextStyle: .headline)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    private let scrollView: UIScrollView = {
+        let scroll = UIScrollView()
+        scroll.backgroundColor = .blue
+        scroll.translatesAutoresizingMaskIntoConstraints = false
+        return scroll
+    }()
+    
+    private let contentView: UIView = {
+        let content = UIView()
+        content.backgroundColor = .red
+        content.translatesAutoresizingMaskIntoConstraints = false
+        return content
     }()
     
     lazy private var logoutButton: UIBarButtonItem = {
@@ -29,6 +34,22 @@ class HomeViewController: UIViewController {
             target: self,
             action: #selector(logoutButtonTapped)
         )
+    }()
+    
+    private var logo: UIImageView = {
+        let image = UIImage(named: "moneybox")
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleToFill
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    private var test: UILabel = {
+        let label = UILabel()
+        label.text = "test"
+        label.textColor = .accent
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
 }
 
@@ -57,20 +78,51 @@ extension HomeViewController {
 
 extension HomeViewController {
     func setupNavBar() {
-        navigationItem.title = "Home"
+        let appearance = UINavigationBarAppearance()
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.accent as Any]
+        appearance.backgroundColor = .primaryBackground
+        navigationItem.standardAppearance = appearance
+        navigationItem.title = homeViewModel?.greetingTitle
         navigationItem.leftBarButtonItem = logoutButton
     }
-    
+}
+
+extension HomeViewController {
     func setupView() {
-        view.addSubview(homeTitle)
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        view.addSubview(logo)
+        view.addSubview(test)
     }
 }
 
 extension HomeViewController {
     func setupLayout() {
         NSLayoutConstraint.activate([
-            homeTitle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            homeTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            // Limit content view height anchor scroll views height anchor to allow scroll
+            contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor),
+            
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            
+            logo.topAnchor.constraint(equalTo: contentView.topAnchor),
+            logo.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            logo.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            logo.heightAnchor.constraint(equalToConstant: 300),
+            logo.widthAnchor.constraint(equalTo: contentView.widthAnchor),
+            
+            test.topAnchor.constraint(equalTo: logo.bottomAnchor, constant: 300),
+            test.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            test.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            test.heightAnchor.constraint(equalToConstant: 300),
+            test.widthAnchor.constraint(equalTo: contentView.widthAnchor),
         ])
     }
 }

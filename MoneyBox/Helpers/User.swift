@@ -3,10 +3,6 @@ import Networking
 
 typealias User = LoginResponse.User
 
-class UserModel  {
-    var user: User?
-}
-
 protocol UserDefaultsHelper {
     func saveUser(_ user: User)
     func getUser() -> User?
