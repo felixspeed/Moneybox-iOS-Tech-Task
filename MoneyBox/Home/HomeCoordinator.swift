@@ -6,7 +6,6 @@ protocol HomeCoordinatorDelegate: AnyObject {
 
 class HomeCoordinator: Coordinator {
     
-    
     private let navigationController: UINavigationController
     private var delegate: HomeCoordinatorDelegate?
     

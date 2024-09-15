@@ -1,5 +1,6 @@
 import UIKit
 import Networking
+import Foundation
 
 protocol LoginViewModelDelegate {
     
@@ -17,15 +18,20 @@ class LoginViewModel {
     }
     
     func auth(email: String?, pass: String?) {
-        #if DEBUG
-        let email: String? = "test+ios@moneyboxapp.com"
-        let pass: String? = "P455word12"
-        #endif
+//        #if DEBUG
+//        let email: String? = "test+ios@moneyboxapp.com"
+//        let pass: String? = "P455word12"
+//        #endif
         
         guard let email, let pass else { return }
         
-        // TODO: Verify email is valid
-        
+        do {
+            try validateEmail(email)
+        } catch {
+            // TODO: Handle error through delegate
+            print("incorrect email")
+            return
+        }
         
         let request = LoginRequest(email: email, password: pass)
         dataProvider.login(request: request) { result in
@@ -39,10 +45,19 @@ class LoginViewModel {
         }
     }
     
+    func validateEmail(_ email: String) throws {
+        let regex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+        let emailPredicate = NSPredicate(format: "SELF MATCHES %@", regex)
+        guard emailPredicate.evaluate(with: email) else {
+            throw LoginError.validationError
+        }
+    }
+    
     func loginSuccessful(response: LoginResponse) {
-        // TODO: Store token, coordinator.finish()
-        print("login success")
+        // TODO: Store token
         coordinator?.finish()
     }
     
 }
+
+
