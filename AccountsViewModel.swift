@@ -6,7 +6,7 @@ typealias Account = AccountResponse
 class AccountsViewModel {
     
     var coordinator: AccountsCoordinator?
-    var view: AccountsViewControllerDelegate?
+    var viewDelegate: AccountsViewControllerDelegate?
 
     private let dataProvider: DataProviderLogic
     
@@ -29,7 +29,7 @@ class AccountsViewModel {
     }   
     
     func getAccounts() {
-        view?.loading(true)
+        viewDelegate?.loading(true)
         dataProvider.fetchProducts { result in
             switch result {
             case .success(let success):
@@ -38,13 +38,13 @@ class AccountsViewModel {
                 // TODO: Handle account get error
                 print("Failed to retrieve accounts")
             }
+            self.viewDelegate?.loading(false)
         }
-        view?.loading(false)
     }
     
     func setAccount(_ result: Account) {
         account = result
-        view?.updatePlanValueLabel(String(format: "£%.2f", result.totalPlanValue ?? 0.0))
+        viewDelegate?.updatePlanValueLabel(String(format: "£%.2f", result.totalPlanValue ?? 0.0))
     }
     
     func logout() {
