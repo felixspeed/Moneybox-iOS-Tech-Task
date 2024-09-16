@@ -25,6 +25,7 @@
 		7F20E8882C98AC5C0066840D /* DetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E8872C98AC5C0066840D /* DetailCoordinator.swift */; };
 		7F20E88A2C98AC630066840D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E8892C98AC630066840D /* DetailViewController.swift */; };
 		7F20E88C2C98AC6E0066840D /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E88B2C98AC6E0066840D /* DetailViewModel.swift */; };
+		7F20E88F2C98D2280066840D /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E88E2C98D2280066840D /* CustomButton.swift */; };
 		B228EA6B2880B30B00B35F16 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B228EA692880B30B00B35F16 /* LoginViewController.swift */; };
 		B26EF47828881E7F003BFDF2 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = B26EF47728881E7F003BFDF2 /* Networking */; };
 		B2CA46CC279350880041B3A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2CA46CB279350880041B3A5 /* AppDelegate.swift */; };
@@ -65,6 +66,7 @@
 		7F20E8872C98AC5C0066840D /* DetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoordinator.swift; sourceTree = "<group>"; };
 		7F20E8892C98AC630066840D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		7F20E88B2C98AC6E0066840D /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		7F20E88E2C98D2280066840D /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		B228EA692880B30B00B35F16 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B24EED92288ED5740016C233 /* Networking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Networking; sourceTree = "<group>"; };
 		B2CA46C8279350880041B3A5 /* MoneyBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,6 +151,14 @@
 			path = Detail;
 			sourceTree = "<group>";
 		};
+		7F20E88D2C98D20A0066840D /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				7F20E88E2C98D2280066840D /* CustomButton.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		B2CA46BF279350880041B3A5 = {
 			isa = PBXGroup;
 			children = (
@@ -179,6 +189,7 @@
 				7F20E85D2C9350220066840D /* Coordinator.swift */,
 				7F20E8562C934DF70066840D /* Extensions */,
 				7F20E87B2C96FFD10066840D /* Helpers */,
+				7F20E88D2C98D20A0066840D /* UI */,
 				7F20E84F2C933F350066840D /* Accounts */,
 				7F20E84E2C933F310066840D /* Login */,
 			);
@@ -329,6 +340,7 @@
 				7F20E8882C98AC5C0066840D /* DetailCoordinator.swift in Sources */,
 				7F20E87F2C97329C0066840D /* TokenSessionManager.swift in Sources */,
 				7F20E8852C98A8630066840D /* String+Extension.swift in Sources */,
+				7F20E88F2C98D2280066840D /* CustomButton.swift in Sources */,
 				7F20E88C2C98AC6E0066840D /* DetailViewModel.swift in Sources */,
 				7F20E8622C9358240066840D /* AccountsViewController.swift in Sources */,
 				7F20E85B2C934E580066840D /* LoginCoordinator.swift in Sources */,

@@ -36,6 +36,11 @@ class DetailViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+    private var addMoneyButton: CustomButton = {
+        let button = CustomButton(title: "Add £10", style: .primary)
+        return button
+    }()
 }
 
 extension DetailViewController {
@@ -53,6 +58,7 @@ extension DetailViewController {
         view.addSubview(valueLabel)
         view.addSubview(moneyboxLabel)
         view.addSubview(earningsLabel)
+        view.addSubview(addMoneyButton)
     }
 }
 
@@ -67,6 +73,10 @@ extension DetailViewController {
             
             moneyboxLabel.topAnchor.constraint(equalTo: earningsLabel.bottomAnchor, constant: 30),
             moneyboxLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            addMoneyButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            addMoneyButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30),
+            addMoneyButton.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, constant: -30)
             
         ])
     }
