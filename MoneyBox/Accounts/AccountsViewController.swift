@@ -5,6 +5,7 @@ protocol AccountsViewControllerDelegate: AnyObject {
     func loading(_ state: Bool)
     func updatePlanValueLabel(_ value: String)
     func displayAccounts(_ accounts: [ProductResponse]?)
+    func accountTapped(withTag: Int)
 }
 
 class AccountsViewController: UIViewController {
@@ -76,8 +77,8 @@ class AccountsViewController: UIViewController {
         return label
     }()
     
-    private var accountsStack: AccountsStack = {
-        let stack = AccountsStack(accounts: [])
+    lazy private var accountsStack: AccountsStack = {
+        let stack = AccountsStack(accounts: [], delegate: self)
         return stack
     }()
     
@@ -90,11 +91,7 @@ class AccountsViewController: UIViewController {
     }()
 }
 
-extension AccountsViewController {
-    @objc func accountPressed() {
-        print("Account Pressed")
-    }
-}
+
 
 extension AccountsViewController {
     @objc func logoutButtonTapped() {
@@ -188,5 +185,10 @@ extension AccountsViewController: AccountsViewControllerDelegate {
             accountsStack.displayAccounts(accounts)
         }
     }
-    
+}
+
+extension AccountsViewController: AccountsStackDelegate {
+    func accountTapped(withTag: Int) {
+        accountsViewModel?.accountTapped(withTag: withTag)
+    }
 }

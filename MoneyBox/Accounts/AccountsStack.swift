@@ -1,15 +1,20 @@
 import UIKit
 import Networking
 
+protocol AccountsStackDelegate: AnyObject {
+    func accountTapped(withTag: Int)
+}
+
 class AccountsStack: UIStackView {
     
     var accounts: [ProductResponse]?
-    var accountLabels: [UILabel]?
+    var delegate: AccountsStackDelegate?
     
-    convenience init(accounts: [ProductResponse]) {
+    convenience init(accounts: [ProductResponse], delegate: AccountsStackDelegate) {
         self.init()
         
         self.accounts = accounts
+        self.delegate = delegate
         setupStack()
     }
     
@@ -45,7 +50,7 @@ extension AccountsStack {
 }
 
 extension AccountsStack {
-    func setupAccountsStack() {
+    private func setupAccountsStack() {
         if let accounts {
             for account in accounts {
                 let accountButton = AccountButton(account: account)
@@ -58,14 +63,24 @@ extension AccountsStack {
 }
 
 extension AccountsStack {
-    @objc func accountTapped(sender: UIButton) {
-        print(sender.tag)
+    private func clearStack() {
+        for v in subviews {
+            v.removeFromSuperview()
+        }
+    }
+}
+
+extension AccountsStack {
+    @objc private func accountTapped(sender: UIButton) {
+        delegate?.accountTapped(withTag: sender.tag)
     }
 }
 
 extension AccountsStack {
     func displayAccounts(_ accounts: [ProductResponse]) {
         self.accounts = accounts
+        clearStack()
+        setupStack()
         setupAccountsStack()
     }
 }

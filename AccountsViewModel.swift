@@ -48,6 +48,12 @@ class AccountsViewModel {
         }
     }
     
+    func accountTapped(withTag: Int) {
+        if let product = account?.productResponses?.first(where: { $0.id == withTag }) {
+            coordinator?.goToAccount(account: product)
+        }
+    }
+    
     func logout() {
         coordinator?.finish()
     }

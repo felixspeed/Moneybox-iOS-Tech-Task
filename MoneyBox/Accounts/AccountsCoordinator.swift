@@ -1,4 +1,5 @@
 import UIKit
+import Networking
 
 protocol AccountsCoordinatorDelegate: AnyObject {
     func delegateFinish(_ coordinator: AccountsCoordinator)
@@ -22,6 +23,22 @@ class AccountsCoordinator: Coordinator {
         delegate?.delegateFinish(self)
     }
     
+}
+
+extension AccountsCoordinator {
+    func goToAccount(account: ProductResponse) {
+        let detailCoordinator = DetailCoordinator(navigationController: navigationController, 
+                                                  detailCoordinatorDelegate: self,
+                                                  account: account)
+        addChild(detailCoordinator)
+        detailCoordinator.start()
+    }
+}
+
+extension AccountsCoordinator: DetailCoordinatorDelegate {
+    func delegateFinish(_ coordinator: DetailCoordinator) {
+        removeChild(coordinator)
+    }
 }
 
 extension AccountsCoordinator {
