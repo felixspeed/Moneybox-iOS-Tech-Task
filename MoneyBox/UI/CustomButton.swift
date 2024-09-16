@@ -21,13 +21,14 @@ class CustomButton: UIButton {
     override var intrinsicContentSize: CGSize {
         get {
             let original = super.intrinsicContentSize
-            return CGSize(width: original.width, height: original.height + 30)
+            return CGSize(width: original.width, height: original.height + 15)
         }
     }
     
     private func setupButton(title: String) {
         setTitle(title, for: .normal)
         setTitleColor(style?.textColor, for: .normal)
+        titleLabel?.font = .preferredFont(forTextStyle: .headline)
         backgroundColor = style?.color
         layer.borderColor = style?.color.cgColor
         layer.borderWidth = 1

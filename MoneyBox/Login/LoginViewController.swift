@@ -70,17 +70,10 @@ class LoginViewController: UIViewController {
         return button
     }()
     
-    // TODO: Make reusable for other stylised buttons
-    private let loginButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Log in", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = .preferredFont(forTextStyle: .body)
-        button.backgroundColor = .accent
-        button.layer.cornerRadius = 8
+    private let loginButton: CustomButton = {
+        let button = CustomButton(title: "Log in", style: .primary)
         // TODO: Add logic for incorrectly populated fields
         button.layer.opacity = button.isEnabled ? 1.0 : 0.2
-        
         
         button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         
