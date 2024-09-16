@@ -1,8 +1,6 @@
 import UIKit
 import Networking
 
-typealias Account = AccountResponse
-
 class AccountsViewModel {
     
     var coordinator: AccountsCoordinator?
@@ -10,7 +8,7 @@ class AccountsViewModel {
 
     private let dataProvider: DataProviderLogic
     
-    @Published var account: Account?
+    @Published var account: AccountResponse?
     
     init() {
         self.dataProvider = DataProvider()
@@ -42,9 +40,10 @@ class AccountsViewModel {
         }
     }
     
-    func setAccount(_ result: Account) {
+    func setAccount(_ result: AccountResponse) {
         account = result
         viewDelegate?.updatePlanValueLabel(String(format: "£%.2f", result.totalPlanValue ?? 0.0))
+        viewDelegate?.displayAccounts(result.accounts)
     }
     
     func logout() {

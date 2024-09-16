@@ -1,10 +1,7 @@
 import UIKit
+import Networking
 
 class AccountButton: UIControl {
-    
-    var accountName: String?
-    var value: Double?
-    var moneybox: Double?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -14,13 +11,11 @@ class AccountButton: UIControl {
         super.init(coder: coder)
     }
     
-    convenience init(accountName: String, value: Double, moneybox: Double) {
+    convenience init(product: ProductResponse) {
         self.init()
         
-        self.accountName = accountName
-        self.value = value
-        self.moneybox = moneybox
-        
+        guard let id = product.id else { return}
+        tag = id
         setupButton()
         setupLayout()
     }
@@ -28,6 +23,15 @@ class AccountButton: UIControl {
     private let leftLabel: UILabel = {
         let label = UILabel()
         label.text = "Left"
+        label.textColor = .accent
+        label.font = .preferredFont(forTextStyle: .headline)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    lazy private var idLabel: UILabel = {
+        let label = UILabel()
+        label.text = String(tag)
         label.textColor = .accent
         label.font = .preferredFont(forTextStyle: .headline)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -42,17 +46,26 @@ class AccountButton: UIControl {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
+}
+
+extension AccountButton {
     private func setupButton() {
         addSubview(leftLabel)
+        addSubview(idLabel)
         addSubview(rightLabel)
     }
-    
+}
+
+extension AccountButton {
     private func setupLayout() {
         NSLayoutConstraint.activate([
             leftLabel.topAnchor.constraint(equalTo: topAnchor),
             leftLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
             leftLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            idLabel.topAnchor.constraint(equalTo: topAnchor),
+            idLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            idLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
             
             rightLabel.topAnchor.constraint(equalTo: topAnchor),
             rightLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),

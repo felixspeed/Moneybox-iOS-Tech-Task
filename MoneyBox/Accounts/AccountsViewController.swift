@@ -1,8 +1,10 @@
 import UIKit
+import Networking
 
 protocol AccountsViewControllerDelegate: AnyObject {
     func loading(_ state: Bool)
     func updatePlanValueLabel(_ value: String)
+    func displayAccounts(_ accounts: [Account]?)
 }
 
 class AccountsViewController: UIViewController {
@@ -36,7 +38,10 @@ class AccountsViewController: UIViewController {
        
        @objc private func debugInfo() {
            print(accountsViewModel?.totalPlanValue)
+           print(accountsViewModel?.account?.accounts?.count)
+           print(accountsViewModel?.account?.accounts?.first?.name)
            print(accountsViewModel?.account?.productResponses?.count)
+           print(accountsViewModel?.account?.productResponses?.first?.product)
        }
     #endif
     
@@ -71,11 +76,9 @@ class AccountsViewController: UIViewController {
         return label
     }()
     
-    lazy private var accountButton: UIControl = {
-        let button = AccountButton(accountName: "test", value: 0.0, moneybox: 0.0)
-        button.addTarget(self, action: #selector(accountPressed), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
+    private var accountsStack: AccountsStack = {
+        let stack = AccountsStack(accounts: [])
+        return stack
     }()
     
     private let spinnerView: UIActivityIndicatorView = {
@@ -132,8 +135,7 @@ extension AccountsViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         view.addSubview(planValueLabel)
-        view.addSubview(accountButton)
-        
+        view.addSubview(accountsStack)
         view.addSubview(spinnerView)
     }
 }
@@ -157,10 +159,9 @@ extension AccountsViewController {
             planValueLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
             planValueLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            accountButton.topAnchor.constraint(equalTo: planValueLabel.bottomAnchor, constant: 50),
-            accountButton.widthAnchor.constraint(equalTo: view.widthAnchor),
-            
-            
+            accountsStack.topAnchor.constraint(equalTo: planValueLabel.bottomAnchor, constant: 15),
+            accountsStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
+            accountsStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             
             spinnerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             spinnerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
@@ -180,6 +181,13 @@ extension AccountsViewController: AccountsViewControllerDelegate {
     
     func updatePlanValueLabel(_ value: String) {
         planValueLabel.text = value
+    }
+    
+    func displayAccounts(_ accounts: [Account]?) {
+        if let accounts {
+            print("Displaying accounts")
+            accountsStack.displayAccounts(accounts)
+        }
     }
     
 }
