@@ -29,6 +29,7 @@ extension AccountsCoordinator {
         let accountsViewController = AccountsViewController()
         let accountsViewModel = AccountsViewModel()
         accountsViewModel.coordinator = self
+        accountsViewModel.view = accountsViewController
         accountsViewController.accountsViewModel = accountsViewModel
         navigationController.viewControllers = [accountsViewController]
     }

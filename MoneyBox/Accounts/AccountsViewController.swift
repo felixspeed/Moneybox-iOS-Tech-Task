@@ -1,5 +1,10 @@
 import UIKit
 
+protocol AccountsViewControllerDelegate: AnyObject {
+    func loading(_ state: Bool)
+    func updatePlanValueLabel(_ value: String)
+}
+
 class AccountsViewController: UIViewController {
     
     var accountsViewModel: AccountsViewModel?
@@ -13,48 +18,64 @@ class AccountsViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .primaryBackground
         
+        #if DEBUG
+        addDebugGestures()
+        #endif
+        
         setupNavBar()
         setupView()
         setupLayout()
     }
     
+    #if DEBUG
+    private func addDebugGestures() {
+           let tapGesture = UITapGestureRecognizer(target: self, action: #selector(debugInfo))
+           tapGesture.numberOfTapsRequired = 3
+           view.addGestureRecognizer(tapGesture)
+       }
+       
+       @objc private func debugInfo() {
+           print(accountsViewModel?.totalPlanValue)
+       }
+    #endif
+    
     private let scrollView: UIScrollView = {
         let scroll = UIScrollView()
-        scroll.backgroundColor = .blue
+        scroll.backgroundColor = .primaryBackground
         scroll.translatesAutoresizingMaskIntoConstraints = false
         return scroll
     }()
     
     private let contentView: UIView = {
         let content = UIView()
-        content.backgroundColor = .red
+        content.backgroundColor = .primaryBackground
         content.translatesAutoresizingMaskIntoConstraints = false
         return content
     }()
     
     lazy private var logoutButton: UIBarButtonItem = {
         return UIBarButtonItem(
-            image: UIImage(systemName: "person.slash"),
+            image: UIImage(systemName: "person.slash.fill"),
             style: .plain,
             target: self,
             action: #selector(logoutButtonTapped)
         )
     }()
     
-    private var logo: UIImageView = {
-        let image = UIImage(named: "moneybox")
-        let imageView = UIImageView(image: image)
-        imageView.contentMode = .scaleToFill
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-    
-    private var test: UILabel = {
+    lazy private var planValueLabel: UILabel = {
         let label = UILabel()
-        label.text = "test"
-        label.textColor = .accent
+        label.text = accountsViewModel?.totalPlanValue
+        label.font = .preferredFont(forTextStyle: .headline)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    private let spinnerView: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView()
+        spinner.style = .large
+        spinner.color = .accent
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        return spinner
     }()
 }
 
@@ -96,8 +117,8 @@ extension AccountsViewController {
     func setupView() {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
-        view.addSubview(logo)
-        view.addSubview(test)
+        view.addSubview(planValueLabel)
+        view.addSubview(spinnerView)
     }
 }
 
@@ -117,17 +138,28 @@ extension AccountsViewController {
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             
-            logo.topAnchor.constraint(equalTo: contentView.topAnchor),
-            logo.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            logo.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            logo.heightAnchor.constraint(equalToConstant: 300),
-            logo.widthAnchor.constraint(equalTo: contentView.widthAnchor),
+            planValueLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
+            planValueLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            test.topAnchor.constraint(equalTo: logo.bottomAnchor, constant: 300),
-            test.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            test.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            test.heightAnchor.constraint(equalToConstant: 300),
-            test.widthAnchor.constraint(equalTo: contentView.widthAnchor),
+            spinnerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            spinnerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
     }
+}
+
+extension AccountsViewController: AccountsViewControllerDelegate {
+    func loading(_ state: Bool) {
+        spinnerView.isHidden = state
+        if state {
+            spinnerView.startAnimating()
+        } else {
+            spinnerView.stopAnimating()
+        }
+    }
+    
+    func updatePlanValueLabel(_ value: String) {
+        planValueLabel.text = value
+    }
+    
+    
 }

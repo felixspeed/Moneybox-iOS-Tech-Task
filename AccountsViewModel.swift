@@ -1,15 +1,16 @@
 import UIKit
 import Networking
 
-typealias Accounts = AccountResponse
+typealias Account = AccountResponse
 
 class AccountsViewModel {
     
     var coordinator: AccountsCoordinator?
+    var view: AccountsViewControllerDelegate?
 
     private let dataProvider: DataProviderLogic
     
-    @Published var accounts: Accounts?
+    @Published var account: Account?
     
     init() {
         self.dataProvider = DataProvider()
@@ -23,20 +24,30 @@ class AccountsViewModel {
         }
     }
     
+    var totalPlanValue: String {
+        return String(format: "£%.2f", account?.totalPlanValue ?? 0.0)
+    }   
+    
     func getAccounts() {
+        view?.loading(true)
         dataProvider.fetchProducts { result in
             switch result {
             case .success(let success):
-                self.accounts = success
+                self.setAccount(success)
             case .failure(let failure):
                 // TODO: Handle account get error
                 print("Failed to retrieve accounts")
             }
         }
+        view?.loading(false)
+    }
+    
+    func setAccount(_ result: Account) {
+        account = result
+        view?.updatePlanValueLabel(String(format: "£%.2f", result.totalPlanValue ?? 0.0))
     }
     
     func logout() {
         coordinator?.finish()
     }
-    
 }
