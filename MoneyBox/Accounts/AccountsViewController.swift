@@ -69,10 +69,19 @@ class AccountsViewController: UIViewController {
         )
     }()
     
+    lazy private var greetingLabel: UILabel = {
+        let label = UILabel()
+        label.text = accountsViewModel?.greetingTitle
+        label.textColor = .accent
+        label.font = .preferredFont(forTextStyle: .title1)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     lazy private var planValueLabel: UILabel = {
         let label = UILabel()
         label.text = "£_.__"
-        label.font = .preferredFont(forTextStyle: .headline)
+        label.font = .preferredFont(forTextStyle: .largeTitle)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -122,7 +131,7 @@ extension AccountsViewController {
         appearance.titleTextAttributes = [.foregroundColor: UIColor.accent as Any]
         appearance.backgroundColor = .primaryBackground
         navigationItem.standardAppearance = appearance
-        navigationItem.title = accountsViewModel?.greetingTitle
+        navigationItem.title = "Home"
         navigationItem.leftBarButtonItem = logoutButton
     }
 }
@@ -131,6 +140,7 @@ extension AccountsViewController {
     func setupView() {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
+        view.addSubview(greetingLabel)
         view.addSubview(planValueLabel)
         view.addSubview(accountsStack)
         view.addSubview(spinnerView)
@@ -153,7 +163,10 @@ extension AccountsViewController {
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             
-            planValueLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
+            greetingLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
+            greetingLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            planValueLabel.topAnchor.constraint(equalTo: greetingLabel.bottomAnchor, constant: 15),
             planValueLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             accountsStack.topAnchor.constraint(equalTo: planValueLabel.bottomAnchor, constant: 15),

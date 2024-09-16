@@ -39,15 +39,6 @@ class AccountButton: UIControl {
         return label
     }()
     
-    lazy private var idLabel: UILabel = {
-        let label = UILabel()
-        label.text = String(tag)
-        label.textColor = .accent
-        label.font = .preferredFont(forTextStyle: .headline)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
     lazy private var valueLabel: UILabel = {
         let label = UILabel()
         label.text = String(self.account?.planValue ?? 0.0).asCurrency
@@ -70,7 +61,6 @@ extension AccountButton {
     private func setupButton() {
         addSubview(nameLabel)
         addSubview(friendlyNameLabel)
-        addSubview(idLabel)
         addSubview(valueLabel)
         addSubview(arrowIcon)
     }
@@ -85,10 +75,6 @@ extension AccountButton {
             friendlyNameLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 5),
             friendlyNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             friendlyNameLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
-            
-            idLabel.topAnchor.constraint(equalTo: topAnchor),
-            idLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            idLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
             
             arrowIcon.topAnchor.constraint(equalTo: topAnchor),
             arrowIcon.trailingAnchor.constraint(equalTo: trailingAnchor),
