@@ -160,8 +160,8 @@ extension AccountsViewController {
             planValueLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             accountsStack.topAnchor.constraint(equalTo: planValueLabel.bottomAnchor, constant: 15),
-            accountsStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
-            accountsStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            accountsStack.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 15),
+            accountsStack.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -15),
             
             spinnerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             spinnerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
