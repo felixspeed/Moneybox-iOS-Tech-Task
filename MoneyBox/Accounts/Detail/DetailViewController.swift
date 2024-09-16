@@ -1,5 +1,9 @@
 import UIKit
 
+protocol DetailViewControllerDelegate: AnyObject {
+    func updateMoney(newValue: Double)
+}
+
 class DetailViewController: UIViewController {
     
     var detailViewModel: DetailViewModel?
@@ -39,8 +43,16 @@ class DetailViewController: UIViewController {
     
     private var addMoneyButton: CustomButton = {
         let button = CustomButton(title: "Add £10", style: .primary)
+        button.addTarget(self, action: #selector(addMoneyButtonTapped), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+}
+
+extension DetailViewController {
+    @objc private func addMoneyButtonTapped() {
+        detailViewModel?.addMoney()
+    }
 }
 
 extension DetailViewController {

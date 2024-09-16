@@ -33,7 +33,6 @@ class CustomButton: UIButton {
         layer.borderColor = style?.color.cgColor
         layer.borderWidth = 1
         layer.cornerRadius = 8
-        translatesAutoresizingMaskIntoConstraints = false
     }
 }
 
