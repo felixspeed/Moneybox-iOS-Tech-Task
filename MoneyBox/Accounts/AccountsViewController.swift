@@ -185,7 +185,6 @@ extension AccountsViewController: AccountsViewControllerDelegate {
     
     func displayAccounts(_ accounts: [ProductResponse]?) {
         if let accounts {
-            print("Displaying accounts")
             accountsStack.displayAccounts(accounts)
         }
     }

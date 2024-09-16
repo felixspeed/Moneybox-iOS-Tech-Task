@@ -48,12 +48,18 @@ extension AccountsStack {
     func setupAccountsStack() {
         if let accounts {
             for account in accounts {
-                let label = UILabel()
-                label.text = account.product?.name
-                label.translatesAutoresizingMaskIntoConstraints = false
-                addArrangedSubview(label)
+                let accountButton = AccountButton(account: account)
+                accountButton.addTarget(self, action: #selector(accountTapped), for: .touchUpInside)
+                accountButton.translatesAutoresizingMaskIntoConstraints = false
+                addArrangedSubview(accountButton)
             }
         }
+    }
+}
+
+extension AccountsStack {
+    @objc func accountTapped(sender: UIButton) {
+        print(sender.tag)
     }
 }
 

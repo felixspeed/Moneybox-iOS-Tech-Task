@@ -3,6 +3,8 @@ import Networking
 
 class AccountButton: UIControl {
     
+    var account: ProductResponse?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -11,19 +13,19 @@ class AccountButton: UIControl {
         super.init(coder: coder)
     }
     
-    convenience init(product: ProductResponse) {
+    convenience init(account: ProductResponse) {
         self.init()
         
-        guard let id = product.id else { return}
+        guard let id = account.id else { return}
+        self.account = account
         tag = id
         setupButton()
         setupLayout()
     }
     
-    private let leftLabel: UILabel = {
+    lazy private var nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Left"
-        label.textColor = .accent
+        label.text = self.account?.product?.name
         label.font = .preferredFont(forTextStyle: .headline)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -50,7 +52,7 @@ class AccountButton: UIControl {
 
 extension AccountButton {
     private func setupButton() {
-        addSubview(leftLabel)
+        addSubview(nameLabel)
         addSubview(idLabel)
         addSubview(rightLabel)
     }
@@ -59,16 +61,16 @@ extension AccountButton {
 extension AccountButton {
     private func setupLayout() {
         NSLayoutConstraint.activate([
-            leftLabel.topAnchor.constraint(equalTo: topAnchor),
-            leftLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
-            leftLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
+            nameLabel.topAnchor.constraint(equalTo: topAnchor),
+            nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            nameLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
             
             idLabel.topAnchor.constraint(equalTo: topAnchor),
             idLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             idLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
             
             rightLabel.topAnchor.constraint(equalTo: topAnchor),
-            rightLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
+            rightLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             rightLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
