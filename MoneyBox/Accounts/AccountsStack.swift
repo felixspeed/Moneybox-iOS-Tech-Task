@@ -3,10 +3,10 @@ import Networking
 
 class AccountsStack: UIStackView {
     
-    var accounts: [Account]?
+    var accounts: [ProductResponse]?
     var accountLabels: [UILabel]?
     
-    convenience init(accounts: [Account]) {
+    convenience init(accounts: [ProductResponse]) {
         self.init()
         
         self.accounts = accounts
@@ -49,7 +49,7 @@ extension AccountsStack {
         if let accounts {
             for account in accounts {
                 let label = UILabel()
-                label.text = account.name
+                label.text = account.product?.name
                 label.translatesAutoresizingMaskIntoConstraints = false
                 addArrangedSubview(label)
             }
@@ -58,7 +58,7 @@ extension AccountsStack {
 }
 
 extension AccountsStack {
-    func displayAccounts(_ accounts: [Account]) {
+    func displayAccounts(_ accounts: [ProductResponse]) {
         self.accounts = accounts
         setupAccountsStack()
     }

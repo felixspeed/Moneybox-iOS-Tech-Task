@@ -43,7 +43,9 @@ class AccountsViewModel {
     func setAccount(_ result: AccountResponse) {
         account = result
         viewDelegate?.updatePlanValueLabel(String(format: "£%.2f", result.totalPlanValue ?? 0.0))
-        viewDelegate?.displayAccounts(result.accounts)
+        if let products = result.productResponses {
+            viewDelegate?.displayAccounts(products)
+        }
     }
     
     func logout() {

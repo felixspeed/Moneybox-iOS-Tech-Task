@@ -4,7 +4,7 @@ import Networking
 protocol AccountsViewControllerDelegate: AnyObject {
     func loading(_ state: Bool)
     func updatePlanValueLabel(_ value: String)
-    func displayAccounts(_ accounts: [Account]?)
+    func displayAccounts(_ accounts: [ProductResponse]?)
 }
 
 class AccountsViewController: UIViewController {
@@ -183,7 +183,7 @@ extension AccountsViewController: AccountsViewControllerDelegate {
         planValueLabel.text = value
     }
     
-    func displayAccounts(_ accounts: [Account]?) {
+    func displayAccounts(_ accounts: [ProductResponse]?) {
         if let accounts {
             print("Displaying accounts")
             accountsStack.displayAccounts(accounts)
