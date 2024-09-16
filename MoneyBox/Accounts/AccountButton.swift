@@ -31,6 +31,14 @@ class AccountButton: UIControl {
         return label
     }()
     
+    lazy private var friendlyNameLabel: UILabel = {
+        let label = UILabel()
+        label.text = self.account?.product?.friendlyName
+        label.font = .preferredFont(forTextStyle: .caption1)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     lazy private var idLabel: UILabel = {
         let label = UILabel()
         label.text = String(tag)
@@ -40,21 +48,31 @@ class AccountButton: UIControl {
         return label
     }()
     
-    private let rightLabel: UILabel = {
+    lazy private var valueLabel: UILabel = {
         let label = UILabel()
-        label.text = "Right"
-        label.textColor = .accent
+        label.text = String(self.account?.planValue ?? 0.0).asCurrency
         label.font = .preferredFont(forTextStyle: .headline)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    private let arrowIcon: UIImageView = {
+        let image = UIImage(systemName: "chevron.right")
+        let imageView = UIImageView(image: image)
+        imageView.tintColor = .gray
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
 }
 
 extension AccountButton {
     private func setupButton() {
         addSubview(nameLabel)
+        addSubview(friendlyNameLabel)
         addSubview(idLabel)
-        addSubview(rightLabel)
+        addSubview(valueLabel)
+        addSubview(arrowIcon)
     }
 }
 
@@ -63,15 +81,22 @@ extension AccountButton {
         NSLayoutConstraint.activate([
             nameLabel.topAnchor.constraint(equalTo: topAnchor),
             nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            nameLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            friendlyNameLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 5),
+            friendlyNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            friendlyNameLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
             
             idLabel.topAnchor.constraint(equalTo: topAnchor),
             idLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             idLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
             
-            rightLabel.topAnchor.constraint(equalTo: topAnchor),
-            rightLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            rightLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
+            arrowIcon.topAnchor.constraint(equalTo: topAnchor),
+            arrowIcon.trailingAnchor.constraint(equalTo: trailingAnchor),
+            arrowIcon.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            valueLabel.topAnchor.constraint(equalTo: topAnchor),
+            valueLabel.trailingAnchor.constraint(equalTo: arrowIcon.leadingAnchor, constant: -8),
+            valueLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
 }

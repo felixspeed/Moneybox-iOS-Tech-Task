@@ -36,8 +36,8 @@ extension AccountsStack {
         layer.shouldRasterize = true
         layer.rasterizationScale = UIScreen.main.scale
         axis = .vertical
-        spacing = 8
-        layoutMargins = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        spacing = 30
+        layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         isLayoutMarginsRelativeArrangement = true
         translatesAutoresizingMaskIntoConstraints = false
         addArrangedSubview(accountsLabel)

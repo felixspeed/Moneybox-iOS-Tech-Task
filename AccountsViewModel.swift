@@ -23,7 +23,7 @@ class AccountsViewModel {
     }
     
     var totalPlanValue: String {
-        return String(format: "£%.2f", account?.totalPlanValue ?? 0.0)
+        return String(account?.totalPlanValue ?? 0.0).asCurrency
     }   
     
     func getAccounts() {
@@ -42,7 +42,7 @@ class AccountsViewModel {
     
     func setAccount(_ result: AccountResponse) {
         account = result
-        viewDelegate?.updatePlanValueLabel(String(format: "£%.2f", result.totalPlanValue ?? 0.0))
+        viewDelegate?.updatePlanValueLabel(String(result.totalPlanValue ?? 0.0).asCurrency)
         if let products = result.productResponses {
             viewDelegate?.displayAccounts(products)
         }

@@ -70,7 +70,7 @@ class AccountsViewController: UIViewController {
     
     lazy private var planValueLabel: UILabel = {
         let label = UILabel()
-        label.text = accountsViewModel?.totalPlanValue
+        label.text = "£_.__"
         label.font = .preferredFont(forTextStyle: .headline)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
