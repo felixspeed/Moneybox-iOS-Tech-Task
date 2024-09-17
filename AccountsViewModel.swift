@@ -33,8 +33,7 @@ class AccountsViewModel {
             case .success(let success):
                 self.setAccount(success)
             case .failure(let failure):
-                // TODO: Handle account get error
-                print("Failed to retrieve accounts")
+                self.viewDelegate?.showError(failure.localizedDescription)
             }
             self.viewDelegate?.loading(false)
         }

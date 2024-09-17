@@ -6,6 +6,7 @@ protocol AccountsViewControllerDelegate: AnyObject {
     func updatePlanValueLabel(_ value: String)
     func displayAccounts(_ accounts: [ProductResponse]?)
     func accountTapped(withTag: Int)
+    func showError(_ error: String)
 }
 
 class AccountsViewController: UIViewController {
@@ -214,6 +215,10 @@ extension AccountsViewController: AccountsViewControllerDelegate {
         if let accounts {
             accountsStack.displayAccounts(accounts)
         }
+    }
+    
+    func showError(_ error: String) {
+        displayError(error)
     }
 }
 

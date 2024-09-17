@@ -4,6 +4,7 @@ protocol DetailViewControllerDelegate: AnyObject {
     func loading(_ state: Bool)
     func addMoneyEnabled(_ state: Bool)
     func updateMoneyboxValue(_ value: String)
+    func showError(_ error: String)
 }
 
 class DetailViewController: UIViewController {
@@ -124,6 +125,10 @@ extension DetailViewController: DetailViewControllerDelegate {
     
     func updateMoneyboxValue(_ value: String) {
         moneyboxLabel.text = value
+    }
+    
+    func showError(_ error: String) {
+        displayError(error)
     }
 }
 

@@ -24,8 +24,7 @@ class DetailViewModel {
             case .success:
                 self.addSuccessful()
             case .failure(let failure):
-                // TODO: Handle failure and display to user through delegate
-                print("Money add fail")
+                self.viewDelegate?.showError(failure.localizedDescription)
                 self.viewDelegate?.loading(false)
                 self.viewDelegate?.addMoneyEnabled(true)
             }
@@ -39,8 +38,7 @@ class DetailViewModel {
             case .success(let success):
                 self.updateAccount(success)
             case .failure(let failure):
-                // TODO: Handle account get error
-                print("Failed to retrieve accounts")
+                self.viewDelegate?.showError(failure.localizedDescription)
                 self.viewDelegate?.loading(false)
                 self.viewDelegate?.addMoneyEnabled(true)
             }
