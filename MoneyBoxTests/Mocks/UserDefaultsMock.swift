@@ -1,11 +1,7 @@
+import Foundation
 @testable import MoneyBox
 
-class UserDefaultsMock: UserDefaultsHelper {
-    func saveUser(_ user: MoneyBox.User) {
-        return
-    }
+class UserDefaultsMock: UserDefaults {
     
-    func getUser() -> MoneyBox.User? {
-        return nil
-    }
+    
 }

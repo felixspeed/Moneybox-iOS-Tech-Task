@@ -164,10 +164,9 @@ extension AccountsViewController {
             // Limit content view height anchor scroll views height anchor to allow scroll
             contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor),
             
-            scrollBackground.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: -10),
+            scrollBackground.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 10),
             scrollBackground.centerXAnchor.constraint(equalTo: view.trailingAnchor),
-            scrollBackground.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 30),
-            scrollBackground.centerYAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
+            scrollBackground.centerYAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
             
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
