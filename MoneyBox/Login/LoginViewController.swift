@@ -15,10 +15,28 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .primaryBackground
         
+        #if DEBUG
+        addDebugGestures()
+        #endif
+        
         setupView()
         setupLayout()
         configureTextFields()
     }
+    
+    #if DEBUG
+    private func addDebugGestures() {
+           let tapGesture = UITapGestureRecognizer(target: self, action: #selector(debugLogin))
+           tapGesture.numberOfTapsRequired = 3
+           view.addGestureRecognizer(tapGesture)
+       }
+       
+       @objc private func debugLogin() {
+           let email: String? = "test+ios@moneyboxapp.com"
+           let pass: String? = "P455word12"
+           loginViewModel?.auth(email: email, pass: pass)
+       }
+    #endif
     
     private let logoView: UIImageView = {
         let logo = UIImage(named: "moneybox")

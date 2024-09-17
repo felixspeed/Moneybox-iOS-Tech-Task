@@ -18,10 +18,7 @@ class LoginViewModel {
     }
     
     func auth(email: String?, pass: String?) {
-        #if DEBUG
-        let email: String? = "test+ios@moneyboxapp.com"
-        let pass: String? = "P455word12"
-        #endif
+        
         
         guard let email, let pass else { return }
         

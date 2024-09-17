@@ -33,7 +33,7 @@ class AccountsViewController: UIViewController {
     #if DEBUG
     private func addDebugGestures() {
            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(debugInfo))
-           tapGesture.numberOfTapsRequired = 2
+           tapGesture.numberOfTapsRequired = 3
            view.addGestureRecognizer(tapGesture)
        }
        
