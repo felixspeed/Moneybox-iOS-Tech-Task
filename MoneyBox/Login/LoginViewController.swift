@@ -96,22 +96,6 @@ class LoginViewController: UIViewController {
 }
 
 extension LoginViewController {
-    private func displayError(_ error: String) {
-        let errorView = UIAlertController(
-            title: error,
-            message: nil,
-            preferredStyle: .alert
-        )
-        errorView.addAction(UIAlertAction(
-            title: "Dismiss",
-            style: .cancel,
-            handler: nil
-        ))
-        self.present(errorView, animated: true, completion: nil)
-    }
-}
-
-extension LoginViewController {
     @objc private func loginButtonTapped() {
         guard let email = emailTextField.text, let pass = passTextField.text else { return }
         loginViewModel?.auth(email: email, pass: pass)
