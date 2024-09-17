@@ -3,6 +3,12 @@ import UIKit
 class CustomButton: UIButton {
     var style: ButtonStyle?
     
+    override var isEnabled: Bool {
+        didSet {
+            layer.opacity = isEnabled ? 1 : 0.2
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -12,7 +18,7 @@ class CustomButton: UIButton {
     }
     
     convenience init(title: String, style: ButtonStyle) {
-        self.init()
+        self.init(type: .system)
         
         self.style = style
         setupButton(title: title)

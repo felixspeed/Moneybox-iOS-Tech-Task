@@ -1,7 +1,9 @@
 import UIKit
 
 protocol DetailViewControllerDelegate: AnyObject {
-    func updateMoney(newValue: Double)
+    func loading(_ state: Bool)
+    func addMoneyEnabled(_ state: Bool)
+    func updateMoneyboxValue(_ value: String)
 }
 
 class DetailViewController: UIViewController {
@@ -47,6 +49,14 @@ class DetailViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    
+    private let spinnerView: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView()
+        spinner.style = .large
+        spinner.color = .accent
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        return spinner
+    }()
 }
 
 extension DetailViewController {
@@ -71,6 +81,7 @@ extension DetailViewController {
         view.addSubview(moneyboxLabel)
         view.addSubview(earningsLabel)
         view.addSubview(addMoneyButton)
+        view.addSubview(spinnerView)
     }
 }
 
@@ -88,9 +99,31 @@ extension DetailViewController {
             
             addMoneyButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             addMoneyButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30),
-            addMoneyButton.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, constant: -30)
+            addMoneyButton.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, constant: -30),
+            
+            spinnerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            spinnerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             
         ])
+    }
+}
+
+extension DetailViewController: DetailViewControllerDelegate {
+    func loading(_ state: Bool) {
+        spinnerView.isHidden = !state
+        if state {
+            spinnerView.startAnimating()
+        } else {
+            spinnerView.stopAnimating()
+        }
+    }
+    
+    func addMoneyEnabled(_ state: Bool) {
+        addMoneyButton.isEnabled = state
+    }
+    
+    func updateMoneyboxValue(_ value: String) {
+        moneyboxLabel.text = value
     }
 }
 

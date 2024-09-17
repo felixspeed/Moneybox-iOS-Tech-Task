@@ -181,7 +181,7 @@ extension AccountsViewController {
 
 extension AccountsViewController: AccountsViewControllerDelegate {
     func loading(_ state: Bool) {
-        spinnerView.isHidden = state
+        spinnerView.isHidden = !state
         if state {
             spinnerView.startAnimating()
         } else {

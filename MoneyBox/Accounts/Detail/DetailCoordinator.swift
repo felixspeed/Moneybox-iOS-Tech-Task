@@ -33,6 +33,7 @@ extension DetailCoordinator {
         let detailViewController = DetailViewController()
         let detailViewModel = DetailViewModel(account: account)
         detailViewModel.coordinator = self
+        detailViewModel.viewDelegate = detailViewController
         detailViewController.detailViewModel = detailViewModel
         navigationController.pushViewController(detailViewController, animated: true)
     }

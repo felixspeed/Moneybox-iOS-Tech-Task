@@ -72,9 +72,7 @@ class LoginViewController: UIViewController {
     
     private let loginButton: CustomButton = {
         let button = CustomButton(title: "Log in", style: .primary)
-        // TODO: Add logic for incorrectly populated fields
-        button.layer.opacity = button.isEnabled ? 1.0 : 0.2
-        
+        button.isEnabled = false
         button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -100,19 +98,31 @@ extension LoginViewController: UITextFieldDelegate {
     
     @objc func screenTapped() {
         view.endEditing(true)
+        loginButton.isEnabled = fieldsPopulated()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField.tag {
         case 0:
             passTextField.becomeFirstResponder()
+            loginButton.isEnabled = fieldsPopulated()
         case 1:
             passTextField.resignFirstResponder()
-            loginButtonTapped()
+            if fieldsPopulated() {
+                loginButton.isEnabled = true
+                loginButtonTapped()
+            } else {
+                loginButton.isEnabled = false
+            }
         default:
             break
         }
         return false
+    }
+    
+    func fieldsPopulated() -> Bool {
+        guard let email = emailTextField.text, let pass = passTextField.text else { return false }
+        return !email.isEmpty && !pass.isEmpty
     }
 }
 
