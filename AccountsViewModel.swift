@@ -8,10 +8,14 @@ class AccountsViewModel {
 
     private let dataProvider: DataProviderLogic
     
-    @Published var account: AccountResponse?
+    var account: AccountResponse?
     
-    init() {
-        self.dataProvider = DataProvider()
+    convenience init() {
+        self.init(dataProvider: DataProvider())
+    }
+    
+    init(dataProvider: DataProviderLogic) {
+        self.dataProvider = dataProvider
     }
     
     var greetingTitle: String {

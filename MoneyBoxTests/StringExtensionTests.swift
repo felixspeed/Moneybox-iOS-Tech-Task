@@ -3,6 +3,6 @@ import Networking
 
 @testable import MoneyBox
 
-final class StringExtensionTests: XCTest {
+final class StringExtensionTests: XCTestCase {
     //TODO: Implement tests
 }

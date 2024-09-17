@@ -3,6 +3,6 @@ import Networking
 
 @testable import MoneyBox
 
-final class TokenSessionManagerTests: XCTest {
+final class TokenSessionManagerTests: XCTestCase {
     //TODO: Implement tests
 }

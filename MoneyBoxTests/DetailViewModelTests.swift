@@ -3,6 +3,6 @@ import Networking
 
 @testable import MoneyBox
 
-final class DetailViewModelTests: XCTest {
+final class DetailViewModelTests: XCTestCase {
     //TODO: Implement tests
 }

@@ -24,6 +24,8 @@ final class LoginViewModelTests: XCTestCase {
                                         tokenSessionManager: tokenSessionManager,
                                         userModel: userModel)
         loginViewModel.viewDelegate = viewDelegate
+        
+        userModel.setUserAsNil()
     }
     
     func test_LoginViewModel_auth_success_tokenSaved() throws {
@@ -82,12 +84,14 @@ final class LoginViewModelTests: XCTestCase {
         loginViewModel.auth(email: nil, pass: "testpassword")
         
         XCTAssertNil(tokenSessionManager.getToken())
+        XCTAssertNil(userModel.getUser())
     }
     
     func test_LoginViewModel_auth_error_noPassword() throws {
         loginViewModel.auth(email: "test@email.com", pass: nil)
         
         XCTAssertNil(tokenSessionManager.getToken())
+        XCTAssertNil(userModel.getUser())
     }
 }
 
