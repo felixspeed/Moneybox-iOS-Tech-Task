@@ -6,6 +6,7 @@ import Foundation
 class LoginViewModel {
     
     var coordinator: LoginCoordinator?
+    var viewDelegate: LoginViewControllerDelegate?
     
     private let dataProvider: DataProviderLogic
     private let tokenSessionManager: TokenSessionManager
@@ -23,8 +24,7 @@ class LoginViewModel {
         do {
             try validateEmail(email)
         } catch {
-            // TODO: Handle error through delegate
-            print("incorrect email")
+            viewDelegate?.showError(LoginError.validationError.description)
             return
         }
         
@@ -34,8 +34,7 @@ class LoginViewModel {
             case .success(let success):
                 self.loginSuccessful(response: success)
             case .failure(let failure):
-                // TODO: Handle failure and display to user through delegate
-                print("Login failed")
+                self.viewDelegate?.showError(failure.localizedDescription)
             }
         }
     }

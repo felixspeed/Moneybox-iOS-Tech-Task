@@ -1,11 +1,8 @@
-//
-//  LoginViewController.swift
-//  MoneyBox
-//
-//  Created by Zeynep Kara on 16.01.2022.
-//
-
 import UIKit
+
+protocol LoginViewControllerDelegate: AnyObject {
+    func showError(_ error: String)
+}
 
 class LoginViewController: UIViewController {
     
@@ -99,14 +96,30 @@ class LoginViewController: UIViewController {
 }
 
 extension LoginViewController {
-    @objc func loginButtonTapped() {
+    private func displayError(_ error: String) {
+        let errorView = UIAlertController(
+            title: error,
+            message: nil,
+            preferredStyle: .alert
+        )
+        errorView.addAction(UIAlertAction(
+            title: "Dismiss",
+            style: .cancel,
+            handler: nil
+        ))
+        self.present(errorView, animated: true, completion: nil)
+    }
+}
+
+extension LoginViewController {
+    @objc private func loginButtonTapped() {
         guard let email = emailTextField.text, let pass = passTextField.text else { return }
         loginViewModel?.auth(email: email, pass: pass)
     }
 }
 
 extension LoginViewController: UITextFieldDelegate {
-    func configureTextFields() {
+    private func configureTextFields() {
         emailTextField.delegate = self
         passTextField.delegate = self
         
@@ -114,7 +127,7 @@ extension LoginViewController: UITextFieldDelegate {
         view.addGestureRecognizer(tap)
     }
     
-    @objc func screenTapped() {
+    @objc private func screenTapped() {
         view.endEditing(true)
         loginButton.isEnabled = fieldsPopulated()
     }
@@ -138,7 +151,7 @@ extension LoginViewController: UITextFieldDelegate {
         return false
     }
     
-    func fieldsPopulated() -> Bool {
+    private func fieldsPopulated() -> Bool {
         guard let email = emailTextField.text, let pass = passTextField.text else { return false }
         return !email.isEmpty && !pass.isEmpty
     }
@@ -184,5 +197,11 @@ extension LoginViewController {
             loginButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
             loginButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -30)
         ])
+    }
+}
+
+extension LoginViewController: LoginViewControllerDelegate{
+    func showError(_ error: String) {
+        displayError(error)
     }
 }

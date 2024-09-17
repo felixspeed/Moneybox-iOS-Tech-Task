@@ -57,7 +57,7 @@ class AccountsViewController: UIViewController {
     private let scrollView: UIScrollView = {
         let scroll = UIScrollView()
         scroll.backgroundColor = .clear
-        scroll.showsVerticalScrollIndicator = true
+        scroll.showsVerticalScrollIndicator = false
         scroll.translatesAutoresizingMaskIntoConstraints = false
         return scroll
     }()
