@@ -12,10 +12,16 @@ class LoginViewModel {
     private let tokenSessionManager: TokenSessionManager
     private let userModel: UserDefaultsHelper
     
-    init() {
-        self.dataProvider = DataProvider()
-        self.tokenSessionManager = TokenSessionManager.shared
-        self.userModel = UserDefaults.standard
+    convenience init() {
+        self.init(dataProvider: DataProvider(),
+                  tokenSessionManager: TokenSessionManager.shared,
+                  userModel: UserDefaults.standard)
+    }
+    
+    init(dataProvider: DataProviderLogic, tokenSessionManager: TokenSessionManager, userModel:  UserDefaultsHelper) {
+        self.dataProvider = dataProvider
+        self.tokenSessionManager = tokenSessionManager
+        self.userModel = userModel
     }
     
     func auth(email: String?, pass: String?) {
