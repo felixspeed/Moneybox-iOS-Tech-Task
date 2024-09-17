@@ -27,6 +27,11 @@
 		7F20E88C2C98AC6E0066840D /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E88B2C98AC6E0066840D /* DetailViewModel.swift */; };
 		7F20E88F2C98D2280066840D /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E88E2C98D2280066840D /* CustomButton.swift */; };
 		7F20E8932C99CAE10066840D /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E8922C99CAE10066840D /* UIViewController+Extension.swift */; };
+		7F20E8952C99D1930066840D /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E8942C99D1930066840D /* LoginViewModelTests.swift */; };
+		7F20E8972C99D22D0066840D /* AccountsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E8962C99D22D0066840D /* AccountsViewModelTests.swift */; };
+		7F20E8992C99D24A0066840D /* DetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E8982C99D24A0066840D /* DetailViewModelTests.swift */; };
+		7F20E89B2C99D2770066840D /* TokenSessionManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E89A2C99D2770066840D /* TokenSessionManagerTests.swift */; };
+		7F20E89D2C99D2A60066840D /* StringExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E89C2C99D2A60066840D /* StringExtensionTests.swift */; };
 		B228EA6B2880B30B00B35F16 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B228EA692880B30B00B35F16 /* LoginViewController.swift */; };
 		B26EF47828881E7F003BFDF2 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = B26EF47728881E7F003BFDF2 /* Networking */; };
 		B2CA46CC279350880041B3A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2CA46CB279350880041B3A5 /* AppDelegate.swift */; };
@@ -69,6 +74,11 @@
 		7F20E88B2C98AC6E0066840D /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		7F20E88E2C98D2280066840D /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		7F20E8922C99CAE10066840D /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		7F20E8942C99D1930066840D /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
+		7F20E8962C99D22D0066840D /* AccountsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewModelTests.swift; sourceTree = "<group>"; };
+		7F20E8982C99D24A0066840D /* DetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModelTests.swift; sourceTree = "<group>"; };
+		7F20E89A2C99D2770066840D /* TokenSessionManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenSessionManagerTests.swift; sourceTree = "<group>"; };
+		7F20E89C2C99D2A60066840D /* StringExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionTests.swift; sourceTree = "<group>"; };
 		B228EA692880B30B00B35F16 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B24EED92288ED5740016C233 /* Networking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Networking; sourceTree = "<group>"; };
 		B2CA46C8279350880041B3A5 /* MoneyBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -202,6 +212,11 @@
 		B2CA46E12793508A0041B3A5 /* MoneyBoxTests */ = {
 			isa = PBXGroup;
 			children = (
+				7F20E8942C99D1930066840D /* LoginViewModelTests.swift */,
+				7F20E8982C99D24A0066840D /* DetailViewModelTests.swift */,
+				7F20E89A2C99D2770066840D /* TokenSessionManagerTests.swift */,
+				7F20E89C2C99D2A60066840D /* StringExtensionTests.swift */,
+				7F20E8962C99D22D0066840D /* AccountsViewModelTests.swift */,
 				B2CA47662794D69A0041B3A5 /* StubData.swift */,
 				B2CA47682794D6AC0041B3A5 /* ResponseJsons */,
 			);
@@ -361,7 +376,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F20E8952C99D1930066840D /* LoginViewModelTests.swift in Sources */,
+				7F20E89B2C99D2770066840D /* TokenSessionManagerTests.swift in Sources */,
+				7F20E89D2C99D2A60066840D /* StringExtensionTests.swift in Sources */,
 				B2CA47672794D69A0041B3A5 /* StubData.swift in Sources */,
+				7F20E8972C99D22D0066840D /* AccountsViewModelTests.swift in Sources */,
+				7F20E8992C99D24A0066840D /* DetailViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

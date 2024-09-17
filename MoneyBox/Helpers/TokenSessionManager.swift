@@ -18,4 +18,6 @@ class TokenSessionManager: SessionManager {
     func removeUserToken() {
         Authentication.token = nil
     }
+    
+    //TODO: Set 5 minute timeout
 }

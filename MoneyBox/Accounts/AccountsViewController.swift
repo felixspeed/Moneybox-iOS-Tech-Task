@@ -183,10 +183,10 @@ extension AccountsViewController {
             greetingLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
             greetingLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            planValueLabel.topAnchor.constraint(equalTo: greetingLabel.bottomAnchor, constant: 20),
+            planValueLabel.topAnchor.constraint(equalTo: greetingLabel.bottomAnchor, constant: 30),
             planValueLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            accountsStack.topAnchor.constraint(equalTo: planValueLabel.bottomAnchor, constant: 30),
+            accountsStack.topAnchor.constraint(equalTo: planValueLabel.bottomAnchor, constant: 50),
             accountsStack.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 15),
             accountsStack.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -15),
 
