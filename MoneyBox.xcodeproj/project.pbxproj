@@ -35,6 +35,7 @@
 		7F20E8A02C99EEB70066840D /* DataProviderLogicMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E89F2C99EEB70066840D /* DataProviderLogicMock.swift */; };
 		7F20E8A22C99EEBF0066840D /* TokenSessionManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E8A12C99EEBF0066840D /* TokenSessionManagerMock.swift */; };
 		7F20E8A42C99EEC60066840D /* UserDefaultsMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E8A32C99EEC60066840D /* UserDefaultsMock.swift */; };
+		7F20E8A62C9A0D2B0066840D /* MockError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E8A52C9A0D2B0066840D /* MockError.swift */; };
 		B228EA6B2880B30B00B35F16 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B228EA692880B30B00B35F16 /* LoginViewController.swift */; };
 		B26EF47828881E7F003BFDF2 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = B26EF47728881E7F003BFDF2 /* Networking */; };
 		B2CA46CC279350880041B3A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2CA46CB279350880041B3A5 /* AppDelegate.swift */; };
@@ -85,6 +86,7 @@
 		7F20E89F2C99EEB70066840D /* DataProviderLogicMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProviderLogicMock.swift; sourceTree = "<group>"; };
 		7F20E8A12C99EEBF0066840D /* TokenSessionManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenSessionManagerMock.swift; sourceTree = "<group>"; };
 		7F20E8A32C99EEC60066840D /* UserDefaultsMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsMock.swift; sourceTree = "<group>"; };
+		7F20E8A52C9A0D2B0066840D /* MockError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockError.swift; sourceTree = "<group>"; };
 		B228EA692880B30B00B35F16 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B24EED92288ED5740016C233 /* Networking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Networking; sourceTree = "<group>"; };
 		B2CA46C8279350880041B3A5 /* MoneyBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -182,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				7F20E89F2C99EEB70066840D /* DataProviderLogicMock.swift */,
+				7F20E8A52C9A0D2B0066840D /* MockError.swift */,
 				7F20E8A12C99EEBF0066840D /* TokenSessionManagerMock.swift */,
 				7F20E8A32C99EEC60066840D /* UserDefaultsMock.swift */,
 			);
@@ -399,6 +402,7 @@
 				7F20E8A42C99EEC60066840D /* UserDefaultsMock.swift in Sources */,
 				7F20E8A02C99EEB70066840D /* DataProviderLogicMock.swift in Sources */,
 				7F20E89D2C99D2A60066840D /* StringExtensionTests.swift in Sources */,
+				7F20E8A62C9A0D2B0066840D /* MockError.swift in Sources */,
 				B2CA47672794D69A0041B3A5 /* StubData.swift in Sources */,
 				7F20E8972C99D22D0066840D /* AccountsViewModelTests.swift in Sources */,
 				7F20E8992C99D24A0066840D /* DetailViewModelTests.swift in Sources */,

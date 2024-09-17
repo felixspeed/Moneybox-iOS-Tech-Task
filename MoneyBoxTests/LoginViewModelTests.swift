@@ -55,10 +55,39 @@ final class LoginViewModelTests: XCTestCase {
             }
         }
         
-        self.loginViewModel.auth(email: "test@email.com", pass: "testpassword")
+        loginViewModel.auth(email: "test@email.com", pass: "testpassword")
         
         XCTAssertEqual(userModel.getUser()?.firstName, user.firstName)
         XCTAssertEqual(userModel.getUser()?.lastName, user.lastName)
+    }
+    
+    func test_LoginViewModel_auth_error_apiCallFailure() throws {
+        dataProvider.loginResponse = .failure(MockError.apiCallFailure)
+        
+        loginViewModel.auth(email: "test@email.com", pass: "testpassword")
+        
+        XCTAssertEqual(viewDelegate.errorMessage, MockError.apiCallFailure.localizedDescription)
+    }
+    
+    func test_LoginViewModel_auth_error_incorrectEmail() throws {
+        let mockEmails = ["test", "test@", "test@email", "test@email.", "@email.com", "email.com", ".com"]
+        for email in mockEmails {
+            XCTAssertThrowsError(try loginViewModel.validateEmail(email)) { error in
+                XCTAssertEqual(error as! LoginError, LoginError.validationError)
+            }
+        }
+    }
+    
+    func test_LoginViewModel_auth_error_noEmail() throws {
+        loginViewModel.auth(email: nil, pass: "testpassword")
+        
+        XCTAssertNil(tokenSessionManager.getToken())
+    }
+    
+    func test_LoginViewModel_auth_error_noPassword() throws {
+        loginViewModel.auth(email: "test@email.com", pass: nil)
+        
+        XCTAssertNil(tokenSessionManager.getToken())
     }
 }
 
