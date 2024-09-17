@@ -46,9 +46,18 @@ class AccountsViewController: UIViewController {
        }
     #endif
     
+    private var scrollBackground: UIImageView = {
+        let image = UIImage(named: "BackgroundAccent")
+        let view = UIImageView(image: image)
+        view.transform = view.transform.rotated(by: .pi / 4)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private let scrollView: UIScrollView = {
         let scroll = UIScrollView()
-        scroll.backgroundColor = .primaryBackground
+        scroll.backgroundColor = .clear
+        scroll.showsVerticalScrollIndicator = true
         scroll.translatesAutoresizingMaskIntoConstraints = false
         return scroll
     }()
@@ -140,6 +149,7 @@ extension AccountsViewController {
     func setupView() {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
+        view.addSubview(scrollBackground)
         view.addSubview(greetingLabel)
         view.addSubview(planValueLabel)
         view.addSubview(accountsStack)
@@ -153,6 +163,11 @@ extension AccountsViewController {
             // Limit content view height anchor scroll views height anchor to allow scroll
             contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor),
             
+            scrollBackground.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: -10),
+            scrollBackground.centerXAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollBackground.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 30),
+            scrollBackground.centerYAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
+            
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -163,15 +178,17 @@ extension AccountsViewController {
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             
-            greetingLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
+            
+            greetingLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
             greetingLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            planValueLabel.topAnchor.constraint(equalTo: greetingLabel.bottomAnchor, constant: 15),
+            planValueLabel.topAnchor.constraint(equalTo: greetingLabel.bottomAnchor, constant: 20),
             planValueLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            accountsStack.topAnchor.constraint(equalTo: planValueLabel.bottomAnchor, constant: 15),
+            accountsStack.topAnchor.constraint(equalTo: planValueLabel.bottomAnchor, constant: 30),
             accountsStack.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 15),
             accountsStack.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -15),
+
             
             spinnerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             spinnerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),

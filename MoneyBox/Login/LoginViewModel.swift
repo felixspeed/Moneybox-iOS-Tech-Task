@@ -18,8 +18,6 @@ class LoginViewModel {
     }
     
     func auth(email: String?, pass: String?) {
-        
-        
         guard let email, let pass else { return }
         
         do {
