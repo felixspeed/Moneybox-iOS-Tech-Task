@@ -54,7 +54,7 @@ class LoginViewController: UIViewController {
     
     private let emailTextField: LoginTextField = {
         let field = LoginTextField()
-        field.setupTextField(isPassword: false)
+        field.setupTextField(type: .email)
         field.translatesAutoresizingMaskIntoConstraints = false
         return field
     }()
@@ -70,7 +70,7 @@ class LoginViewController: UIViewController {
     
     private let passTextField: LoginTextField = {
         let field = LoginTextField()
-        field.setupTextField(isPassword: true)
+        field.setupTextField(type: .pass)
         field.translatesAutoresizingMaskIntoConstraints = false
         return field
     }()

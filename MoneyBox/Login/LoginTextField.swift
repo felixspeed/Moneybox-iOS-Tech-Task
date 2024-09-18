@@ -17,16 +17,11 @@ class LoginTextField: UITextField {
         CGRectInset(bounds, 10, 10)
     }
     
-    func setupTextField(isPassword: Bool) {
-        /* 
-        Explicitly defining the tag like this isn't ideal,
-        ideally set up as an enum but functional for now
-        */
-        //TODO: create enum
-        tag = isPassword ? 1 : 0
+    func setupTextField(type: LoginTextFieldType) {
+        tag = type.rawValue
         backgroundColor = .primaryBackground
-        isSecureTextEntry = isPassword
-        returnKeyType = isPassword ? .done : .next
+        isSecureTextEntry = type.isSecure
+        returnKeyType = type.returnType
         layer.borderColor = UIColor.accent?.cgColor
         layer.borderWidth = 1
         layer.cornerRadius = 8

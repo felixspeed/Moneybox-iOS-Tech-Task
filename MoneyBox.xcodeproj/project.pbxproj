@@ -38,6 +38,7 @@
 		7F20E8A62C9A0D2B0066840D /* MockError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E8A52C9A0D2B0066840D /* MockError.swift */; };
 		7F8D4D1D2C9B1E5100DFE28B /* OneOffPaymentResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 7F8D4D1B2C9B1A9000DFE28B /* OneOffPaymentResponse.json */; };
 		7F8D4D1F2C9B3C3F00DFE28B /* UserDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8D4D1E2C9B3C3F00DFE28B /* UserDefaultsTests.swift */; };
+		7F8D4D212C9B5D1300DFE28B /* LoginTextFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8D4D202C9B5D1300DFE28B /* LoginTextFieldType.swift */; };
 		B228EA6B2880B30B00B35F16 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B228EA692880B30B00B35F16 /* LoginViewController.swift */; };
 		B26EF47828881E7F003BFDF2 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = B26EF47728881E7F003BFDF2 /* Networking */; };
 		B2CA46CC279350880041B3A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2CA46CB279350880041B3A5 /* AppDelegate.swift */; };
@@ -91,6 +92,7 @@
 		7F20E8A52C9A0D2B0066840D /* MockError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockError.swift; sourceTree = "<group>"; };
 		7F8D4D1B2C9B1A9000DFE28B /* OneOffPaymentResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = OneOffPaymentResponse.json; sourceTree = "<group>"; };
 		7F8D4D1E2C9B3C3F00DFE28B /* UserDefaultsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsTests.swift; sourceTree = "<group>"; };
+		7F8D4D202C9B5D1300DFE28B /* LoginTextFieldType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextFieldType.swift; sourceTree = "<group>"; };
 		B228EA692880B30B00B35F16 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B24EED92288ED5740016C233 /* Networking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Networking; sourceTree = "<group>"; };
 		B2CA46C8279350880041B3A5 /* MoneyBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,6 +129,7 @@
 			children = (
 				7F20E85A2C934E580066840D /* LoginCoordinator.swift */,
 				7F20E8722C947A400066840D /* LoginTextField.swift */,
+				7F8D4D202C9B5D1300DFE28B /* LoginTextFieldType.swift */,
 				B228EA692880B30B00B35F16 /* LoginViewController.swift */,
 				7F20E85F2C9356050066840D /* LoginViewModel.swift */,
 				7F20E8792C96FD500066840D /* LoginError.swift */,
@@ -379,6 +382,7 @@
 				7F20E8652C9358720066840D /* AccountsViewModel.swift in Sources */,
 				7F20E87A2C96FD500066840D /* LoginError.swift in Sources */,
 				B2CA46CC279350880041B3A5 /* AppDelegate.swift in Sources */,
+				7F8D4D212C9B5D1300DFE28B /* LoginTextFieldType.swift in Sources */,
 				7F20E88A2C98AC630066840D /* DetailViewController.swift in Sources */,
 				7F20E87D2C96FFD90066840D /* User.swift in Sources */,
 				7F20E85E2C9350220066840D /* Coordinator.swift in Sources */,
