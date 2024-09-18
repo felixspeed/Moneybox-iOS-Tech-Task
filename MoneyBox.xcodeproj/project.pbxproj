@@ -20,7 +20,6 @@
 		7F20E87D2C96FFD90066840D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E87C2C96FFD90066840D /* User.swift */; };
 		7F20E87F2C97329C0066840D /* TokenSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E87E2C97329C0066840D /* TokenSessionManager.swift */; };
 		7F20E8812C9872050066840D /* AccountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E8802C9872050066840D /* AccountButton.swift */; };
-		7F20E8832C988B040066840D /* AccountsStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E8822C988B040066840D /* AccountsStack.swift */; };
 		7F20E8852C98A8630066840D /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E8842C98A8630066840D /* String+Extension.swift */; };
 		7F20E8882C98AC5C0066840D /* DetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E8872C98AC5C0066840D /* DetailCoordinator.swift */; };
 		7F20E88A2C98AC630066840D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F20E8892C98AC630066840D /* DetailViewController.swift */; };
@@ -41,6 +40,8 @@
 		7F8D4D212C9B5D1300DFE28B /* LoginTextFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8D4D202C9B5D1300DFE28B /* LoginTextFieldType.swift */; };
 		7F8D4D232C9B633100DFE28B /* CustomStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8D4D222C9B633100DFE28B /* CustomStack.swift */; };
 		7F8D4D252C9B6E1000DFE28B /* CustomStackElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8D4D242C9B6E1000DFE28B /* CustomStackElement.swift */; };
+		7F8D4D272C9B800600DFE28B /* CustomDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8D4D262C9B800600DFE28B /* CustomDivider.swift */; };
+		7F8D4D292C9B871D00DFE28B /* ProductInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8D4D282C9B871D00DFE28B /* ProductInfo.swift */; };
 		B228EA6B2880B30B00B35F16 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B228EA692880B30B00B35F16 /* LoginViewController.swift */; };
 		B26EF47828881E7F003BFDF2 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = B26EF47728881E7F003BFDF2 /* Networking */; };
 		B2CA46CC279350880041B3A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2CA46CB279350880041B3A5 /* AppDelegate.swift */; };
@@ -76,7 +77,6 @@
 		7F20E87C2C96FFD90066840D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7F20E87E2C97329C0066840D /* TokenSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenSessionManager.swift; sourceTree = "<group>"; };
 		7F20E8802C9872050066840D /* AccountButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountButton.swift; sourceTree = "<group>"; };
-		7F20E8822C988B040066840D /* AccountsStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsStack.swift; sourceTree = "<group>"; };
 		7F20E8842C98A8630066840D /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		7F20E8872C98AC5C0066840D /* DetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoordinator.swift; sourceTree = "<group>"; };
 		7F20E8892C98AC630066840D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +97,8 @@
 		7F8D4D202C9B5D1300DFE28B /* LoginTextFieldType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextFieldType.swift; sourceTree = "<group>"; };
 		7F8D4D222C9B633100DFE28B /* CustomStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStack.swift; sourceTree = "<group>"; };
 		7F8D4D242C9B6E1000DFE28B /* CustomStackElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStackElement.swift; sourceTree = "<group>"; };
+		7F8D4D262C9B800600DFE28B /* CustomDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDivider.swift; sourceTree = "<group>"; };
+		7F8D4D282C9B871D00DFE28B /* ProductInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfo.swift; sourceTree = "<group>"; };
 		B228EA692880B30B00B35F16 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B24EED92288ED5740016C233 /* Networking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Networking; sourceTree = "<group>"; };
 		B2CA46C8279350880041B3A5 /* MoneyBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,7 +151,6 @@
 				7F20E8612C9358240066840D /* AccountsViewController.swift */,
 				7F20E8642C9358720066840D /* AccountsViewModel.swift */,
 				7F20E8802C9872050066840D /* AccountButton.swift */,
-				7F20E8822C988B040066840D /* AccountsStack.swift */,
 			);
 			path = Accounts;
 			sourceTree = "<group>";
@@ -179,6 +180,7 @@
 				7F20E8872C98AC5C0066840D /* DetailCoordinator.swift */,
 				7F20E8892C98AC630066840D /* DetailViewController.swift */,
 				7F20E88B2C98AC6E0066840D /* DetailViewModel.swift */,
+				7F8D4D282C9B871D00DFE28B /* ProductInfo.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -188,6 +190,7 @@
 			children = (
 				7F20E88E2C98D2280066840D /* CustomButton.swift */,
 				7F8D4D222C9B633100DFE28B /* CustomStack.swift */,
+				7F8D4D262C9B800600DFE28B /* CustomDivider.swift */,
 				7F8D4D242C9B6E1000DFE28B /* CustomStackElement.swift */,
 			);
 			path = UI;
@@ -384,7 +387,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F8D4D252C9B6E1000DFE28B /* CustomStackElement.swift in Sources */,
-				7F20E8832C988B040066840D /* AccountsStack.swift in Sources */,
 				7F20E8552C9346370066840D /* AppCoordinator.swift in Sources */,
 				7F20E8652C9358720066840D /* AccountsViewModel.swift in Sources */,
 				7F20E87A2C96FD500066840D /* LoginError.swift in Sources */,
@@ -401,9 +403,11 @@
 				7F20E88C2C98AC6E0066840D /* DetailViewModel.swift in Sources */,
 				7F20E8622C9358240066840D /* AccountsViewController.swift in Sources */,
 				7F20E85B2C934E580066840D /* LoginCoordinator.swift in Sources */,
+				7F8D4D272C9B800600DFE28B /* CustomDivider.swift in Sources */,
 				B228EA6B2880B30B00B35F16 /* LoginViewController.swift in Sources */,
 				7F20E8672C93587C0066840D /* AccountsCoordinator.swift in Sources */,
 				7F20E8812C9872050066840D /* AccountButton.swift in Sources */,
+				7F8D4D292C9B871D00DFE28B /* ProductInfo.swift in Sources */,
 				7F20E8582C934E0B0066840D /* UIColor+Extension.swift in Sources */,
 				7F8D4D232C9B633100DFE28B /* CustomStack.swift in Sources */,
 				7F20E8602C9356050066840D /* LoginViewModel.swift in Sources */,

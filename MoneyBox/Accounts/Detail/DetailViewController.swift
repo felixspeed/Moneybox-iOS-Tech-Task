@@ -91,14 +91,15 @@ extension DetailViewController {
         guard let productInfo = detailViewModel?.getInfo() else { return }
         var productInfoViews: [CustomStackElement] = []
         for info in productInfo {
-            productInfoViews.append(CustomStackElement(primaryLeft: info.0,
-                                                       secondaryLeft: "test caption",
-                                                       primaryRight: info.1,
-                                                       secondaryRight: "electric boogaloo",
+            productInfoViews.append(CustomStackElement(primaryLeft: info.label ?? "Unknown label",
+                                                       secondaryLeft: info.subLabel,
+                                                       primaryRight: info.info ?? "n/a",
+                                                       secondaryRight: info.subInfo,
                                                        isButton: false
                                                       ))
         }
-        infoStack.displayElements(productInfoViews)
+        infoStack.elements = productInfoViews
+        infoStack.displayElements()
     }
 }
 

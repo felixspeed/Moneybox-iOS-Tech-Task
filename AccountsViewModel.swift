@@ -51,7 +51,7 @@ class AccountsViewModel {
         }
     }
     
-    func accountTapped(withTag: Int) {
+    func elementTapped(withTag: Int) {
         if let product = account?.productResponses?.first(where: { $0.id == withTag }) {
             coordinator?.goToProduct(product: product)
         }

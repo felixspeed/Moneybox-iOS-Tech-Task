@@ -20,8 +20,18 @@ class DetailViewModel {
         self.dataProvider = dataProvider
     }
     
-    func getInfo() -> [(String, String)] {
-        return [("first", "number"), ("second", "yahoo")]
+    func getInfo() -> [ProductInfo] {
+        var info: [ProductInfo] = []
+        info.append(ProductInfo(label: "Moneybox", 
+                                info: product.moneybox?.description.asCurrency
+                               ))
+        
+        let percentage: Double = product.investorAccount?.earningsAsPercentage ?? 0.0
+        info.append(ProductInfo(label: "Earnings",
+                                info: product.investorAccount?.earningsNet?.description.asCurrency,
+                                subInfo: "\(percentage < 0 ? "-" : "+")\(percentage)%"
+                               ))
+        return info
     }
     
     func addMoney() {

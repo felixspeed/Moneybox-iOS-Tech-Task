@@ -1,19 +1,27 @@
 import UIKit
 
-class CustomStackElement: UIView {
+class CustomStackElement: UIControl {
     var primaryLeft: String?
     var secondaryLeft: String?
     var primaryRight: String?
     var secondaryRight: String?
     var isButton: Bool?
     
-    convenience init(primaryLeft: String, secondaryLeft: String? = nil, primaryRight: String, secondaryRight: String? = nil, isButton: Bool) {
+    convenience init(primaryLeft: String,
+                     secondaryLeft: String? = nil,
+                     primaryRight: String,
+                     secondaryRight: String? = nil,
+                     isButton: Bool,
+                     id: Int? = nil) {
         self.init()
         self.primaryLeft = primaryLeft
         self.secondaryLeft = secondaryLeft
         self.primaryRight = primaryRight
         self.secondaryRight = secondaryRight
         self.isButton = isButton
+        if let id {
+            tag = id
+        }
         
         setupLabels()
         setupLayout()

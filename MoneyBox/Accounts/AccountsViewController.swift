@@ -5,7 +5,7 @@ protocol AccountsViewControllerDelegate: AnyObject {
     func loading(_ state: Bool)
     func updatePlanValueLabel(_ value: String)
     func displayAccounts(_ accounts: [ProductResponse]?)
-    func accountTapped(withTag: Int)
+    func elementTapped(withTag: Int)
     func showError(_ error: String)
 }
 
@@ -40,10 +40,6 @@ class AccountsViewController: UIViewController {
        
        @objc private func debugInfo() {
            print(accountsViewModel?.totalPlanValue)
-           print(accountsViewModel?.account?.accounts?.count)
-           print(accountsViewModel?.account?.accounts?.first?.name)
-           print(accountsViewModel?.account?.productResponses?.count)
-           print(accountsViewModel?.account?.productResponses?.first?.product)
        }
     #endif
     
@@ -96,8 +92,10 @@ class AccountsViewController: UIViewController {
         return label
     }()
     
-    lazy private var accountsStack: AccountsStack = {
-        let stack = AccountsStack(accounts: [], delegate: self)
+    lazy private var accountsStack: CustomStack = {
+        let stack = CustomStack(title: "Accounts",
+                                areButtons: true,
+                                delegate: self)
         stack.backgroundColor = .primaryBackground
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
@@ -188,8 +186,9 @@ extension AccountsViewController {
             planValueLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             accountsStack.topAnchor.constraint(equalTo: planValueLabel.bottomAnchor, constant: 50),
-            accountsStack.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 15),
-            accountsStack.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -15),
+            accountsStack.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 20),
+            accountsStack.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -20),
+            
 
             
             spinnerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -216,7 +215,17 @@ extension AccountsViewController: AccountsViewControllerDelegate {
     
     func displayAccounts(_ accounts: [ProductResponse]?) {
         if let accounts {
-            accountsStack.displayAccounts(accounts)
+            var accountButtons: [CustomStackElement] = []
+            for account in accounts {
+                accountButtons.append(CustomStackElement(primaryLeft: account.product?.name ?? "Unknown",
+                                                         secondaryLeft: account.product?.friendlyName,
+                                                         primaryRight: (account.planValue?.description ?? "0.0").asCurrency,
+                                                         isButton: true,
+                                                         id: account.id
+                                                        ))
+            }
+            accountsStack.buttons = accountButtons
+            accountsStack.displayElements()
         }
     }
     
@@ -225,8 +234,8 @@ extension AccountsViewController: AccountsViewControllerDelegate {
     }
 }
 
-extension AccountsViewController: AccountsStackDelegate {
-    func accountTapped(withTag: Int) {
-        accountsViewModel?.accountTapped(withTag: withTag)
+extension AccountsViewController: CustomStackDelegate {
+    func elementTapped(withTag: Int) {
+        accountsViewModel?.elementTapped(withTag: withTag)
     }
 }

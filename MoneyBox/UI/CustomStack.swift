@@ -7,8 +7,8 @@ protocol CustomStackDelegate: AnyObject {
 class CustomStack: UIStackView {
     
     var title: String?
-    var buttons: [UIControl] = []
-    var elements: [UIView] = []
+    var buttons: [CustomStackElement] = []
+    var elements: [CustomStackElement] = []
     var areButtons: Bool?
     var delegate: CustomStackDelegate?
     
@@ -29,13 +29,10 @@ class CustomStack: UIStackView {
         return label
     }()
     
-    lazy private var divider: UIView = {
-        let view = UIView()
-        view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.gray.cgColor
-        view.heightAnchor.constraint(equalToConstant: 1).isActive = true
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+    private let divider: CustomDivider = {
+        let div = CustomDivider()
+        div.translatesAutoresizingMaskIntoConstraints = false
+        return div
     }()
 }
 
@@ -52,29 +49,27 @@ extension CustomStack {
         layer.shouldRasterize = true
         layer.rasterizationScale = UIScreen.main.scale
         axis = .vertical
-        spacing = 30
+        spacing = 40
         layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         isLayoutMarginsRelativeArrangement = true
+        addArrangedSubview(titleLabel)
+        setCustomSpacing(15, after: titleLabel)
         if title != nil {
-            addArrangedSubview(titleLabel)
+            addArrangedSubview(divider)
         }
     }
 }
 
 extension CustomStack {
     private func setupElementsStack() {
-        if areButtons ?? false {
-            for button in buttons {
-                addArrangedSubview(divider)
-                button.addTarget(self, action: #selector(elementTapped), for: .touchUpInside)
-                button.translatesAutoresizingMaskIntoConstraints = false
-                addArrangedSubview(button)
-            }
-        }
         for element in elements {
-            addArrangedSubview(divider)
             element.translatesAutoresizingMaskIntoConstraints = false
             addArrangedSubview(element)
+        }
+        for button in buttons {
+            button.addTarget(self, action: #selector(elementTapped), for: .touchUpInside)
+            button.translatesAutoresizingMaskIntoConstraints = false
+            addArrangedSubview(button)
         }
     }
 }
@@ -94,8 +89,7 @@ extension CustomStack {
 }
 
 extension CustomStack {
-    func displayElements(_ elements: [UIView]) {
-        self.elements = elements
+    func displayElements() {
         clearStack()
         setupStack()
         setupElementsStack()
