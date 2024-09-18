@@ -22,6 +22,7 @@ class LoginTextField: UITextField {
         Explicitly defining the tag like this isn't ideal,
         ideally set up as an enum but functional for now
         */
+        //TODO: create enum
         tag = isPassword ? 1 : 0
         backgroundColor = .primaryBackground
         isSecureTextEntry = isPassword

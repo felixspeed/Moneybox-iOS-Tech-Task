@@ -7,6 +7,7 @@ extension String {
             formatter.numberStyle = .currency
             formatter.maximumFractionDigits = 2
             formatter.minimumFractionDigits = 2
+            formatter.roundingMode = .down
             if let str = formatter.string(for: value) {
                 return str
             }

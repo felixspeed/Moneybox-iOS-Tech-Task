@@ -44,7 +44,7 @@ final class AccountsViewModelTests: XCTestCase {
     }
     
     func test_AccountsViewModel_greetingTitle_withUser() throws {
-        let userModel = UserDefaults()
+        let userModel = UserDefaults.standard
         StubData.read(file: "LoginSucceed") { (result: Result<LoginResponse, Error>) in
             switch result {
             case .success(let success):
