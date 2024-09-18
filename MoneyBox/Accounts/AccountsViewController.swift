@@ -98,6 +98,8 @@ class AccountsViewController: UIViewController {
     
     lazy private var accountsStack: AccountsStack = {
         let stack = AccountsStack(accounts: [], delegate: self)
+        stack.backgroundColor = .primaryBackground
+        stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
     

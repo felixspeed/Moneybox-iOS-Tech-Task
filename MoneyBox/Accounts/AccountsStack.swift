@@ -29,7 +29,6 @@ class AccountsStack: UIStackView {
 
 extension AccountsStack {
     private func setupStack() {
-        layer.backgroundColor = UIColor.primaryBackground?.cgColor
         layer.cornerRadius = 16
         layer.borderColor = UIColor.clear.cgColor
         layer.borderWidth = 1
@@ -44,7 +43,6 @@ extension AccountsStack {
         spacing = 30
         layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         isLayoutMarginsRelativeArrangement = true
-        translatesAutoresizingMaskIntoConstraints = false
         addArrangedSubview(accountsLabel)
     }
 }
