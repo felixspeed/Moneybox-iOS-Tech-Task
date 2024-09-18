@@ -59,8 +59,9 @@ final class LoginViewModelTests: XCTestCase {
         
         loginViewModel.auth(email: "test@email.com", pass: "testpassword")
         
-        XCTAssertEqual(userModel.getUser()?.firstName, user.firstName)
-        XCTAssertEqual(userModel.getUser()?.lastName, user.lastName)
+        var savedUser = userModel.getUser()
+        XCTAssertEqual(savedUser?.firstName, user.firstName)
+        XCTAssertEqual(savedUser?.lastName, user.lastName)
     }
     
     func test_LoginViewModel_auth_error_apiCallFailure() throws {
