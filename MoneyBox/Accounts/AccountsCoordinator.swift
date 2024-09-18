@@ -26,10 +26,10 @@ class AccountsCoordinator: Coordinator {
 }
 
 extension AccountsCoordinator {
-    func goToAccount(account: ProductResponse) {
-        let detailCoordinator = DetailCoordinator(navigationController: navigationController, 
+    func goToProduct(product: ProductResponse) {
+        let detailCoordinator = DetailCoordinator(navigationController: navigationController,
                                                   detailCoordinatorDelegate: self,
-                                                  account: account)
+                                                  product: product)
         addChild(detailCoordinator)
         detailCoordinator.start()
     }

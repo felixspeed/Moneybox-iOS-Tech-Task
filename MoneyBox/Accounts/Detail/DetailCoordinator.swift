@@ -10,12 +10,12 @@ class DetailCoordinator: Coordinator {
     private let navigationController: UINavigationController
     private let detailCoordinatorDelegate: DetailCoordinatorDelegate
     
-    var account: ProductResponse
+    var product: ProductResponse
     
-    init(navigationController: UINavigationController, detailCoordinatorDelegate: DetailCoordinatorDelegate, account: ProductResponse) {
+    init(navigationController: UINavigationController, detailCoordinatorDelegate: DetailCoordinatorDelegate, product: ProductResponse) {
         self.navigationController = navigationController
         self.detailCoordinatorDelegate = detailCoordinatorDelegate
-        self.account = account
+        self.product = product
     }
     
     
@@ -31,7 +31,7 @@ class DetailCoordinator: Coordinator {
 extension DetailCoordinator {
     private func displayDetail() {
         let detailViewController = DetailViewController()
-        let detailViewModel = DetailViewModel(account: account)
+        let detailViewModel = DetailViewModel(product: product)
         detailViewModel.coordinator = self
         detailViewModel.viewDelegate = detailViewController
         detailViewController.detailViewModel = detailViewModel

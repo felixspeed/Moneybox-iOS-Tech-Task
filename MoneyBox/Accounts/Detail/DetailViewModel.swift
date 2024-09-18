@@ -7,15 +7,20 @@ class DetailViewModel {
     var dataProvider: DataProviderLogic
     
     
-    var account: ProductResponse
+    var product: ProductResponse
     
-    init(account: ProductResponse) {
-        self.account = account
-        dataProvider = DataProvider()
+    convenience init(product: ProductResponse) {
+        self.init(product: product,
+                  dataProvider: DataProvider())
+    }
+    
+    init(product: ProductResponse, dataProvider: DataProviderLogic) {
+        self.product = product
+        self.dataProvider = dataProvider
     }
     
     func addMoney() {
-        guard let productId = account.id else { return  }
+        guard let productId = product.id else { return  }
         viewDelegate?.loading(true)
         viewDelegate?.addMoneyEnabled(false)
         let request = OneOffPaymentRequest(amount: 10, investorProductID: productId)
@@ -46,8 +51,8 @@ class DetailViewModel {
     }
     
     private func updateAccount(_ accountResponse: AccountResponse) {
-        guard let productResponse = accountResponse.productResponses?.first(where: { $0.id == account.id }) else { return }
-        account = productResponse
+        guard let productResponse = accountResponse.productResponses?.first(where: { $0.id == product.id }) else { return }
+        product = productResponse
         print(productResponse)
         viewDelegate?.updateMoneyboxValue("Moneybox: \(productResponse.moneybox?.description.asCurrency ?? "n/a")")
         viewDelegate?.loading(false)

@@ -25,6 +25,15 @@ class AccountsStack: UIStackView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+    lazy private var divider: UIView = {
+        let view = UIView()
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.gray.cgColor
+        view.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
 }
 
 extension AccountsStack {
@@ -44,6 +53,7 @@ extension AccountsStack {
         layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         isLayoutMarginsRelativeArrangement = true
         addArrangedSubview(accountsLabel)
+        addArrangedSubview(divider)
     }
 }
 
@@ -62,8 +72,8 @@ extension AccountsStack {
 
 extension AccountsStack {
     private func clearStack() {
-        for v in subviews {
-            v.removeFromSuperview()
+        for subview in subviews {
+            subview.removeFromSuperview()
         }
     }
 }

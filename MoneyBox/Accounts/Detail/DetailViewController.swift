@@ -22,7 +22,7 @@ class DetailViewController: UIViewController {
     
     lazy private var valueLabel: UILabel = {
         let label = UILabel()
-        label.text = detailViewModel?.account.planValue?.description.asCurrency
+        label.text = detailViewModel?.product.planValue?.description.asCurrency
         label.font = .preferredFont(forTextStyle: .largeTitle)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -30,7 +30,7 @@ class DetailViewController: UIViewController {
     
     lazy private var earningsLabel: UILabel = {
         let label = UILabel()
-        label.text = "Current earnings: \(detailViewModel?.account.investorAccount?.earningsNet?.description.asCurrency ?? "n/a")"
+        label.text = "Current earnings: \(detailViewModel?.product.investorAccount?.earningsNet?.description.asCurrency ?? "n/a")"
         label.font = .preferredFont(forTextStyle: .caption1)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -38,7 +38,7 @@ class DetailViewController: UIViewController {
     
     lazy private var moneyboxLabel: UILabel = {
         let label = UILabel()
-        label.text = "Moneybox: \(detailViewModel?.account.moneybox?.description.asCurrency ?? "n/a")"
+        label.text = "Moneybox: \(detailViewModel?.product.moneybox?.description.asCurrency ?? "n/a")"
         label.font = .preferredFont(forTextStyle: .title3)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -72,7 +72,7 @@ extension DetailViewController {
         appearance.titleTextAttributes = [.foregroundColor: UIColor.accent as Any]
         appearance.backgroundColor = .primaryBackground
         navigationItem.standardAppearance = appearance
-        navigationItem.title = detailViewModel?.account.product?.name
+        navigationItem.title = detailViewModel?.product.product?.name
     }
 }
 
