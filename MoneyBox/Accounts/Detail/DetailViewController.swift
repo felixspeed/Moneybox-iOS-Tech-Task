@@ -16,6 +16,7 @@ class DetailViewController: UIViewController {
         view.backgroundColor = .primaryBackground
         
         setupNavBar()
+        setupStack()
         setupView()
         setupLayout()
     }
@@ -42,6 +43,15 @@ class DetailViewController: UIViewController {
         label.font = .preferredFont(forTextStyle: .title3)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    private var infoStack: CustomStack = {
+        let stack = CustomStack(title: nil,
+                                areButtons: false,
+                                delegate: nil)
+        stack.backgroundColor = .primaryBackground
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
     }()
     
     private var addMoneyButton: CustomButton = {
@@ -77,10 +87,31 @@ extension DetailViewController {
 }
 
 extension DetailViewController {
+    private func setupStack() {
+        guard let productInfo = detailViewModel?.getInfo() else { return }
+        var productInfoViews: [CustomStackElement] = []
+        for info in productInfo {
+            productInfoViews.append(CustomStackElement(primaryLeft: info.0,
+                                                       secondaryLeft: "test caption",
+                                                       primaryRight: info.1,
+                                                       secondaryRight: "electric boogaloo",
+                                                       isButton: false
+                                                      ))
+        }
+        infoStack.displayElements(productInfoViews)
+    }
+}
+
+extension DetailViewController {
     private func setupView() {
         view.addSubview(valueLabel)
         view.addSubview(moneyboxLabel)
         view.addSubview(earningsLabel)
+        
+        //TODO: Add more product information
+        //TODO: Clean up UI design
+        view.addSubview(infoStack)
+        
         view.addSubview(addMoneyButton)
         view.addSubview(spinnerView)
     }
@@ -97,6 +128,10 @@ extension DetailViewController {
             
             moneyboxLabel.topAnchor.constraint(equalTo: earningsLabel.bottomAnchor, constant: 30),
             moneyboxLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            infoStack.topAnchor.constraint(equalTo: moneyboxLabel.bottomAnchor, constant: 50),
+            infoStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            infoStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
             
             addMoneyButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             addMoneyButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30),

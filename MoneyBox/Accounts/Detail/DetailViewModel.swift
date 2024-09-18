@@ -1,4 +1,5 @@
 import Networking
+import UIKit
 
 class DetailViewModel {
     
@@ -17,6 +18,10 @@ class DetailViewModel {
     init(product: ProductResponse, dataProvider: DataProviderLogic) {
         self.product = product
         self.dataProvider = dataProvider
+    }
+    
+    func getInfo() -> [(String, String)] {
+        return [("first", "number"), ("second", "yahoo")]
     }
     
     func addMoney() {
