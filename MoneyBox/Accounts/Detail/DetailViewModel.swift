@@ -68,8 +68,6 @@ class DetailViewModel {
     private func updateAccount(_ accountResponse: AccountResponse) {
         guard let productResponse = accountResponse.productResponses?.first(where: { $0.id == product.id }) else { return }
         product = productResponse
-        print(productResponse)
-        viewDelegate?.updateMoneyboxValue("Moneybox: \(productResponse.moneybox?.description.asCurrency ?? "n/a")")
         viewDelegate?.loading(false)
         viewDelegate?.addMoneyEnabled(true)
     }

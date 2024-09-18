@@ -189,8 +189,8 @@
 			isa = PBXGroup;
 			children = (
 				7F20E88E2C98D2280066840D /* CustomButton.swift */,
-				7F8D4D222C9B633100DFE28B /* CustomStack.swift */,
 				7F8D4D262C9B800600DFE28B /* CustomDivider.swift */,
+				7F8D4D222C9B633100DFE28B /* CustomStack.swift */,
 				7F8D4D242C9B6E1000DFE28B /* CustomStackElement.swift */,
 			);
 			path = UI;

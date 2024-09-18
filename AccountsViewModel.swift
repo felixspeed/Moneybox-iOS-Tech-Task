@@ -45,7 +45,14 @@ class AccountsViewModel {
     
     func setAccount(_ result: AccountResponse) {
         account = result
-        viewDelegate?.updatePlanValueLabel(String(result.totalPlanValue ?? 0.0).asCurrency)
+        var totalMoneybox = 0.0
+        if let products = result.productResponses {
+            for product in products {
+                totalMoneybox += product.moneybox ?? 0
+            }
+        }
+        viewDelegate?.updateValues(planValue: String(result.totalPlanValue ?? 0.0).asCurrency,
+                                   moneyboxValue: String(totalMoneybox.description.asCurrency))
         if let products = result.productResponses {
             viewDelegate?.displayAccounts(products)
         }

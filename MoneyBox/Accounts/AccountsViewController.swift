@@ -3,7 +3,7 @@ import Networking
 
 protocol AccountsViewControllerDelegate: AnyObject {
     func loading(_ state: Bool)
-    func updatePlanValueLabel(_ value: String)
+    func updateValues(planValue: String, moneyboxValue: String)
     func displayAccounts(_ accounts: [ProductResponse]?)
     func elementTapped(withTag: Int)
     func showError(_ error: String)
@@ -12,6 +12,7 @@ protocol AccountsViewControllerDelegate: AnyObject {
 class AccountsViewController: UIViewController {
     
     var accountsViewModel: AccountsViewModel?
+    var moneyboxValue: String?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -55,6 +56,8 @@ class AccountsViewController: UIViewController {
         let scroll = UIScrollView()
         scroll.backgroundColor = .clear
         scroll.showsVerticalScrollIndicator = false
+        scroll.isExclusiveTouch = false
+        scroll.delaysContentTouches = false
         scroll.translatesAutoresizingMaskIntoConstraints = false
         return scroll
     }()
@@ -88,6 +91,14 @@ class AccountsViewController: UIViewController {
         let label = UILabel()
         label.text = "£_.__"
         label.font = .preferredFont(forTextStyle: .largeTitle)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    lazy private var totalMoneyBoxValueLabel: UILabel = {
+        let label = UILabel()
+        label.text = "£_.__"
+        label.font = .preferredFont(forTextStyle: .title3)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -150,10 +161,11 @@ extension AccountsViewController {
     func setupView() {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
-        view.addSubview(scrollBackground)
-        view.addSubview(greetingLabel)
-        view.addSubview(planValueLabel)
-        view.addSubview(accountsStack)
+        scrollView.addSubview(scrollBackground)
+        scrollView.addSubview(greetingLabel)
+        scrollView.addSubview(planValueLabel)
+        scrollView.addSubview(totalMoneyBoxValueLabel)
+        scrollView.addSubview(accountsStack)
         view.addSubview(spinnerView)
     }
 }
@@ -179,17 +191,18 @@ extension AccountsViewController {
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             
             
-            greetingLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
+            greetingLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
             greetingLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             planValueLabel.topAnchor.constraint(equalTo: greetingLabel.bottomAnchor, constant: 30),
             planValueLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            accountsStack.topAnchor.constraint(equalTo: planValueLabel.bottomAnchor, constant: 50),
-            accountsStack.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 20),
-            accountsStack.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -20),
+            totalMoneyBoxValueLabel.topAnchor.constraint(equalTo: planValueLabel.bottomAnchor, constant: 10),
+            totalMoneyBoxValueLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-
+            accountsStack.topAnchor.constraint(equalTo: totalMoneyBoxValueLabel.bottomAnchor, constant: 50),
+            accountsStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            accountsStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
             spinnerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             spinnerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
@@ -209,8 +222,10 @@ extension AccountsViewController: AccountsViewControllerDelegate {
         }
     }
     
-    func updatePlanValueLabel(_ value: String) {
-        planValueLabel.text = value
+    func updateValues(planValue: String, moneyboxValue: String) {
+        planValueLabel.text = planValue
+        totalMoneyBoxValueLabel.text = moneyboxValue
+        
     }
     
     func displayAccounts(_ accounts: [ProductResponse]?) {
@@ -220,6 +235,7 @@ extension AccountsViewController: AccountsViewControllerDelegate {
                 accountButtons.append(CustomStackElement(primaryLeft: account.product?.name ?? "Unknown",
                                                          secondaryLeft: account.product?.friendlyName,
                                                          primaryRight: (account.planValue?.description ?? "0.0").asCurrency,
+                                                         secondaryRight: account.moneybox?.description.asCurrency ?? "£_.__",
                                                          isButton: true,
                                                          id: account.id
                                                         ))

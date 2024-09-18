@@ -3,7 +3,6 @@ import UIKit
 protocol DetailViewControllerDelegate: AnyObject {
     func loading(_ state: Bool)
     func addMoneyEnabled(_ state: Bool)
-    func updateMoneyboxValue(_ value: String)
     func showError(_ error: String)
 }
 
@@ -25,22 +24,6 @@ class DetailViewController: UIViewController {
         let label = UILabel()
         label.text = detailViewModel?.product.planValue?.description.asCurrency
         label.font = .preferredFont(forTextStyle: .largeTitle)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    lazy private var earningsLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Current earnings: \(detailViewModel?.product.investorAccount?.earningsNet?.description.asCurrency ?? "n/a")"
-        label.font = .preferredFont(forTextStyle: .caption1)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    lazy private var moneyboxLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Moneybox: \(detailViewModel?.product.moneybox?.description.asCurrency ?? "n/a")"
-        label.font = .preferredFont(forTextStyle: .title3)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -106,13 +89,7 @@ extension DetailViewController {
 extension DetailViewController {
     private func setupView() {
         view.addSubview(valueLabel)
-        view.addSubview(moneyboxLabel)
-        view.addSubview(earningsLabel)
-        
-        //TODO: Add more product information
-        //TODO: Clean up UI design
         view.addSubview(infoStack)
-        
         view.addSubview(addMoneyButton)
         view.addSubview(spinnerView)
     }
@@ -121,16 +98,10 @@ extension DetailViewController {
 extension DetailViewController {
     private func setupLayout() {
         NSLayoutConstraint.activate([
-            valueLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
+            valueLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80),
             valueLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            earningsLabel.topAnchor.constraint(equalTo: valueLabel.bottomAnchor, constant: 15),
-            earningsLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            
-            moneyboxLabel.topAnchor.constraint(equalTo: earningsLabel.bottomAnchor, constant: 30),
-            moneyboxLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            
-            infoStack.topAnchor.constraint(equalTo: moneyboxLabel.bottomAnchor, constant: 50),
+            infoStack.topAnchor.constraint(equalTo: valueLabel.bottomAnchor, constant: 80),
             infoStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
             infoStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
             
@@ -157,10 +128,6 @@ extension DetailViewController: DetailViewControllerDelegate {
     
     func addMoneyEnabled(_ state: Bool) {
         addMoneyButton.isEnabled = state
-    }
-    
-    func updateMoneyboxValue(_ value: String) {
-        moneyboxLabel.text = value
     }
     
     func showError(_ error: String) {
