@@ -4,7 +4,7 @@ import XCTest
 
 final class StringExtensionTests: XCTestCase {
     
-    func test_StringExtension_asCurrency_successful() throws {
+    func test_StringExtension_asCurrency_success() throws {
         let value: Double = 12.34
         XCTAssertEqual(value.description.asCurrency, "£12.34")
     }

@@ -75,9 +75,9 @@ class AccountsViewControllerDelegateMock: AccountsViewControllerDelegate {
         planValue = value
     }
     
+    func updateValues(planValue: String, moneyboxValue: String) {}
     func displayAccounts(_ accounts: [Networking.ProductResponse]?) {}
-    
-    func accountTapped(withTag: Int) {}
+    func elementTapped(withTag: Int) {}
     
     func showError(_ error: String) {
         errorMessage = error

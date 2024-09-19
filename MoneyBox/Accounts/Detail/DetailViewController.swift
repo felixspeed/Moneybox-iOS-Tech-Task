@@ -28,6 +28,14 @@ class DetailViewController: UIViewController {
         return label
     }()
     
+    lazy private var friendlyNameLabel: UILabel = {
+        let label = UILabel()
+        label.text = detailViewModel?.product.product?.friendlyName
+        label.font = .preferredFont(forTextStyle: .title3)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     private var infoStack: CustomStack = {
         let stack = CustomStack(title: nil,
                                 areButtons: false,
@@ -89,6 +97,7 @@ extension DetailViewController {
 extension DetailViewController {
     private func setupView() {
         view.addSubview(valueLabel)
+        view.addSubview(friendlyNameLabel)
         view.addSubview(infoStack)
         view.addSubview(addMoneyButton)
         view.addSubview(spinnerView)
@@ -98,10 +107,13 @@ extension DetailViewController {
 extension DetailViewController {
     private func setupLayout() {
         NSLayoutConstraint.activate([
-            valueLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80),
+            valueLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 85),
             valueLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            infoStack.topAnchor.constraint(equalTo: valueLabel.bottomAnchor, constant: 80),
+            friendlyNameLabel.topAnchor.constraint(equalTo: valueLabel.bottomAnchor, constant: 10),
+            friendlyNameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            infoStack.topAnchor.constraint(equalTo: friendlyNameLabel.bottomAnchor, constant: 50),
             infoStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
             infoStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
             

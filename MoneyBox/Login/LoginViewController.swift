@@ -24,7 +24,7 @@ class LoginViewController: UIViewController {
     #if DEBUG
     private func addDebugGestures() {
            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(debugLogin))
-           tapGesture.numberOfTapsRequired = 3
+           tapGesture.numberOfTapsRequired = 5
            view.addGestureRecognizer(tapGesture)
        }
        
