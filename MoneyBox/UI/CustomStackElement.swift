@@ -82,14 +82,16 @@ class CustomStackElement: UIControl {
     }
     
     private func setupLayout() {
+        guard let isButton else { return }
+        
         NSLayoutConstraint.activate([
+            self.heightAnchor.constraint(equalToConstant: 35),
             primaryLeftLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
         ])
         
         if secondaryLeft != nil {
             NSLayoutConstraint.activate([
                 primaryLeftLabel.topAnchor.constraint(equalTo: topAnchor),
-                secondaryLeftLabel.topAnchor.constraint(equalTo: primaryLeftLabel.bottomAnchor, constant: 5),
                 secondaryLeftLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
                 secondaryLeftLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
             ])
@@ -101,7 +103,6 @@ class CustomStackElement: UIControl {
         if secondaryRight != nil {
             NSLayoutConstraint.activate([
                 primaryRightLabel.topAnchor.constraint(equalTo: topAnchor),
-                secondaryRightLabel.topAnchor.constraint(equalTo: primaryRightLabel.bottomAnchor, constant: 5),
                 secondaryRightLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
             ])
         } else {
@@ -110,7 +111,7 @@ class CustomStackElement: UIControl {
             ])
         }
         
-        if !(isButton ?? true) {
+        if !isButton {
             NSLayoutConstraint.activate([
                 primaryRightLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             ])

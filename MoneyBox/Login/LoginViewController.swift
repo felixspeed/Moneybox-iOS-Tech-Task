@@ -47,7 +47,7 @@ class LoginViewController: UIViewController {
         let label = UILabel()
         label.text = "Email address"
         label.font = .preferredFont(forTextStyle: .body)
-        label.textColor = .accent
+        label.textColor = .gray
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -63,7 +63,7 @@ class LoginViewController: UIViewController {
         let label = UILabel()
         label.text = "Password"
         label.font = .preferredFont(forTextStyle: .body)
-        label.textColor = .accent
+        label.textColor = .gray
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -133,6 +133,31 @@ extension LoginViewController: UITextFieldDelegate {
             break
         }
         return false
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        guard let loginTextField = textField as? LoginTextField else { return }
+        updateEditing(textField: loginTextField, withColor: .accent ?? .systemTeal, borderSize: 2)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+        guard let loginTextField = textField as? LoginTextField else { return }
+        if loginTextField.text?.isEmpty ?? false {
+            updateEditing(textField: loginTextField, withColor: .gray, borderSize: 1)
+        }
+    }
+    
+    func updateEditing(textField: LoginTextField, withColor: UIColor, borderSize: CGFloat) {
+        textField.layer.borderColor = withColor.cgColor
+        textField.layer.borderWidth = borderSize
+        switch textField.type {
+        case .email:
+            emailLabel.textColor = withColor
+        case .pass:
+            passLabel.textColor = withColor
+        case .none:
+            return
+        }
     }
     
     private func fieldsPopulated() -> Bool {

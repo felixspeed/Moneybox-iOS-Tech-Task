@@ -49,7 +49,7 @@ extension CustomStack {
         layer.shouldRasterize = true
         layer.rasterizationScale = UIScreen.main.scale
         axis = .vertical
-        spacing = 40
+        spacing = 30
         layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         isLayoutMarginsRelativeArrangement = true
         addArrangedSubview(titleLabel)

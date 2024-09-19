@@ -213,12 +213,11 @@ extension AccountsViewController {
 extension AccountsViewController: AccountsViewControllerDelegate {
     func loading(_ state: Bool) {
         spinnerView.isHidden = !state
+        accountsStack.isHidden = state
         if state {
             spinnerView.startAnimating()
-            accountsStack.isHidden = true
         } else {
             spinnerView.stopAnimating()
-            accountsStack.isHidden = false
         }
     }
     
