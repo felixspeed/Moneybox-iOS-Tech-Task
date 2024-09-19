@@ -16,6 +16,7 @@ class LoginViewModel {
         self.init(dataProvider: DataProvider(),
                   tokenSessionManager: TokenSessionManager.shared,
                   userModel: UserDefaults.standard)
+        tokenSessionManager.delegate = self
     }
     
     init(dataProvider: DataProviderLogic, tokenSessionManager: TokenSessionManager, userModel:  UserDefaultsHelper) {
@@ -64,4 +65,9 @@ class LoginViewModel {
     
 }
 
+extension LoginViewModel: TokenSessionManagerDelegate {
+    func logout() {
+        coordinator?.logout()  
+    }
+}
 

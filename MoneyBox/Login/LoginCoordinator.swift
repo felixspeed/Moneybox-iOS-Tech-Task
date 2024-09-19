@@ -2,6 +2,7 @@ import UIKit
 
 protocol LoginCoordinatorDelegate: AnyObject {
     func delegateFinish(_ coordinator: LoginCoordinator)
+    func logout()
 }
 
 class LoginCoordinator: Coordinator {
@@ -22,6 +23,9 @@ class LoginCoordinator: Coordinator {
         delegate?.delegateFinish(self)
     }
     
+    func logout() {
+        delegate?.logout()
+    }
 }
 
 extension LoginCoordinator {

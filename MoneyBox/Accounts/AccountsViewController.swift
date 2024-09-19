@@ -175,7 +175,7 @@ extension AccountsViewController {
 extension AccountsViewController {
     func setupLayout() {
         NSLayoutConstraint.activate([
-            // Limit content view height anchor scroll views height anchor to allow scroll
+            // Limit content view height anchor to scroll views height anchor to allow scroll
             contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor),
             
             scrollBackground.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 10),

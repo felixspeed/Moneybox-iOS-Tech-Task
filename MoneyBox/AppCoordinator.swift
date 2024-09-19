@@ -38,6 +38,13 @@ extension AppCoordinator: LoginCoordinatorDelegate {
         navToAccounts()
         removeChild(coordinator)
     }
+    
+    func logout() {
+        for child in self.children {
+            removeChild(child)
+        }
+        navToLogin()
+    }
 }
 
 extension AppCoordinator: AccountsCoordinatorDelegate {
