@@ -77,6 +77,7 @@ class AccountsViewController: UIViewController {
             action: #selector(logoutButtonTapped)
         )
         button.accessibilityIdentifier = "Logout button"
+        return button
     }()
     
     lazy private var greetingLabel: UILabel = {
