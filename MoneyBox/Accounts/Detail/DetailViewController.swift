@@ -49,6 +49,7 @@ class DetailViewController: UIViewController {
         let button = CustomButton(title: "Add £10", style: .primary)
         button.addTarget(self, action: #selector(addMoneyButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.accessibilityIdentifier = "Add money button"
         return button
     }()
     

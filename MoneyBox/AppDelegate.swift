@@ -13,8 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        //TODO: accessibility
-        
         let navigationController = UINavigationController()
         let coordinator = AppCoordinator(navigationController: navigationController)
         coordinator.start()

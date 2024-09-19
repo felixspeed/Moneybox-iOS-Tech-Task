@@ -70,12 +70,13 @@ class AccountsViewController: UIViewController {
     }()
     
     lazy private var logoutButton: UIBarButtonItem = {
-        return UIBarButtonItem(
+        let button = UIBarButtonItem(
             image: UIImage(systemName: "person.slash.fill"),
             style: .plain,
             target: self,
             action: #selector(logoutButtonTapped)
         )
+        button.accessibilityIdentifier = "Logout button"
     }()
     
     lazy private var greetingLabel: UILabel = {

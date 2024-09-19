@@ -26,7 +26,7 @@ final class UserDefaultsTests: XCTestCase {
     func test_UserDefaults_setUser_success() throws {
         userModel.saveUser(user)
         
-        var savedUser = userModel.getUser()
+        let savedUser = userModel.getUser()
         XCTAssertEqual(savedUser?.firstName, user.firstName)
         XCTAssertEqual(savedUser?.lastName, user.lastName)
     }

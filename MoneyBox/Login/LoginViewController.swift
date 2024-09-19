@@ -11,6 +11,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .primaryBackground
+        view.accessibilityIdentifier = "Login"
         
         #if DEBUG
         addDebugGestures()
@@ -40,6 +41,7 @@ class LoginViewController: UIViewController {
         let view = UIImageView(image: logo)
         view.contentMode = .scaleAspectFit
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.accessibilityIdentifier = "Moneybox logo"
         return view
     }()
     
@@ -56,6 +58,7 @@ class LoginViewController: UIViewController {
         let field = LoginTextField()
         field.setupTextField(type: .email)
         field.translatesAutoresizingMaskIntoConstraints = false
+        field.accessibilityIdentifier = "Email login text field"
         return field
     }()
     
@@ -72,6 +75,7 @@ class LoginViewController: UIViewController {
         let field = LoginTextField()
         field.setupTextField(type: .pass)
         field.translatesAutoresizingMaskIntoConstraints = false
+        field.accessibilityIdentifier = "Pass login text field"
         return field
     }()
     
@@ -89,8 +93,8 @@ class LoginViewController: UIViewController {
         let button = CustomButton(title: "Log in", style: .primary)
         button.isEnabled = false
         button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
-        
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.accessibilityIdentifier = "Login button"
         return button
     }()
 }

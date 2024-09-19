@@ -59,7 +59,7 @@ final class LoginViewModelTests: XCTestCase {
         
         loginViewModel.auth(email: "test@email.com", pass: "testpassword")
         
-        var savedUser = userModel.getUser()
+        let savedUser = userModel.getUser()
         XCTAssertEqual(savedUser?.firstName, user.firstName)
         XCTAssertEqual(savedUser?.lastName, user.lastName)
     }
