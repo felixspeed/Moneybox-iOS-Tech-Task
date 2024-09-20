@@ -62,7 +62,7 @@ class CustomStackElement: UIControl {
     private let arrowIcon: UIImageView = {
         let image = UIImage(systemName: "chevron.right")
         let imageView = UIImageView(image: image)
-        imageView.tintColor = .gray
+        imageView.tintColor = .accent
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -123,7 +123,7 @@ class CustomStackElement: UIControl {
         } else {
             NSLayoutConstraint.activate([
                 arrowIcon.topAnchor.constraint(equalTo: topAnchor),
-                arrowIcon.trailingAnchor.constraint(equalTo: trailingAnchor),
+                arrowIcon.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
                 arrowIcon.bottomAnchor.constraint(equalTo: bottomAnchor),
                 primaryRightLabel.trailingAnchor.constraint(equalTo: arrowIcon.leadingAnchor, constant: -8),
             ])

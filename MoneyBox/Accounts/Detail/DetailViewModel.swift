@@ -33,9 +33,11 @@ class DetailViewModel {
                                 info: product.investorAccount?.earningsNet?.description.asCurrency,
                                 subInfo: "\(percentage < 0 ? "-" : "+")\(percentage)%"
                                ))
-        info.append(ProductInfo(label: "Today's Interest",
-                                info: product.investorAccount?.todaysInterest?.description.asCurrency
-                               ))
+        if let interest = product.investorAccount?.todaysInterest {
+            info.append(ProductInfo(label: "Today's Interest",
+                                    info: interest.description.asCurrency
+                                   ))
+        }
         return info
     }
     

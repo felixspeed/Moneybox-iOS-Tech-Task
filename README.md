@@ -1,6 +1,33 @@
 
 # Moneybox iOS Technical Challenge
 
+
+## Implementation
+
+- MVVM+C design pattern used with parent AppCoordinator and coordinators for the 3 main flows: Login, Accounts and Detail.
+- Adherance to SOLID principles
+- UIKit and autolayout used throughout
+
+## Additional features
+
+- Additional product information displayed within detail page
+- Logout button on Accounts screen navigation bar with user confirmation
+- Custom stack for information display with options for sublabels and button handling
+- Token timeout after 5 minutes returning user to login page
+- Dark and light appearance
+
+## Next steps
+
+If I were to take this project further I'd like to implement the following:
+
+- Custom error message display
+- Pin login alternative
+- Animations for accounts screen welcome
+- Tab bar integration
+- Migration to async for networking requests
+- Localisable strings for preferred languages
+
+
 ## The Brief
 
 To create a 'light' version of the Moneybox app that will allow existing users to login and check their account balance, as well as viewing their Moneybox savings. 
