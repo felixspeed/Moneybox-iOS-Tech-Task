@@ -1,6 +1,7 @@
 import UIKit
 
 protocol LoginViewControllerDelegate: AnyObject {
+    func loading(_ state: Bool)
     func showError(_ error: String)
 }
 
@@ -89,13 +90,21 @@ class LoginViewController: UIViewController {
         return button
     }()
     
-    private let loginButton: CustomButton = {
+    lazy private var loginButton: CustomButton = {
         let button = CustomButton(title: "Log in", style: .primary)
         button.isEnabled = false
         button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.accessibilityIdentifier = "Login button"
         return button
+    }()
+    
+    private let spinnerView: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView()
+        spinner.style = .large
+        spinner.color = .accent
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        return spinner
     }()
 }
 
@@ -179,6 +188,7 @@ extension LoginViewController {
         view.addSubview(passTextField)
         view.addSubview(forgottenPassButton)
         view.addSubview(loginButton)
+        view.addSubview(spinnerView)
     }
 }
 
@@ -208,12 +218,25 @@ extension LoginViewController {
             
             loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             loginButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
-            loginButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -30)
+            loginButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -30),
+            
+            spinnerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            spinnerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
     }
 }
 
 extension LoginViewController: LoginViewControllerDelegate{
+    func loading(_ state: Bool) {
+        spinnerView.isHidden = !state
+        loginButton.isEnabled = !state
+        if state {
+            spinnerView.startAnimating()
+        } else {
+            spinnerView.stopAnimating()
+        }
+    }
+    
     func showError(_ error: String) {
         displayError(error)
     }

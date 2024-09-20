@@ -36,6 +36,7 @@ class LoginViewModel {
         }
         
         let request = LoginRequest(email: email, password: pass)
+        viewDelegate?.loading(true)
         dataProvider.login(request: request) { result in
             switch result {
             case .success(let success):
@@ -43,6 +44,7 @@ class LoginViewModel {
             case .failure(let failure):
                 self.viewDelegate?.showError(failure.localizedDescription)
             }
+            self.viewDelegate?.loading(false)
         }
     }
     

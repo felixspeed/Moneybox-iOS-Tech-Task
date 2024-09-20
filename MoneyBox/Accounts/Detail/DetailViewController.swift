@@ -45,7 +45,7 @@ class DetailViewController: UIViewController {
         return stack
     }()
     
-    private var addMoneyButton: CustomButton = {
+    lazy private var addMoneyButton: CustomButton = {
         let button = CustomButton(title: "Add £10", style: .primary)
         button.addTarget(self, action: #selector(addMoneyButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false

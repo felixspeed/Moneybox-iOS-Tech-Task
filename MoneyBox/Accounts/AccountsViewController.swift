@@ -35,12 +35,12 @@ class AccountsViewController: UIViewController {
     #if DEBUG
     private func addDebugGestures() {
            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(debugInfo))
-           tapGesture.numberOfTapsRequired = 3
+           tapGesture.numberOfTapsRequired = 5
            view.addGestureRecognizer(tapGesture)
        }
        
        @objc private func debugInfo() {
-           print(accountsViewModel?.totalPlanValue)
+           print(accountsViewModel?.totalPlanValue as Any)
        }
     #endif
     
