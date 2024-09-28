@@ -97,6 +97,10 @@ final class LoginViewModelTests: XCTestCase {
 }
 
 class LoginViewControllerDelegateMock: LoginViewControllerDelegate {
+    func loading(_ state: Bool) {
+        //
+    }
+    
     var errorMessage: String?
     func showError(_ error: String) {
         errorMessage = error
