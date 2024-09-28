@@ -18,6 +18,9 @@ class TokenSessionManager: SessionManager {
     
     // Singleton to enforce one token per session
     static var shared: TokenSessionManager = TokenSessionManager()
+    // This is a good use of a singleton, however some developers hate using singletons
+    // at all costs. For learning purposes, is there another way you could have achieved
+    // the same outcome?
     
     func setUserToken(_ token: String) {
         Authentication.token = token
@@ -29,6 +32,8 @@ class TokenSessionManager: SessionManager {
     }
     
     private func startTimer() {
+        // If I manually log out before the 5 mins is over, this timer would be triggered again.
+        // How could you prevent that?
         let timeout: TimeInterval = 300
         timer = Timer.scheduledTimer(timeInterval: timeout,
                                      target: self,

@@ -7,6 +7,10 @@ protocol LoginViewControllerDelegate: AnyObject {
 
 class LoginViewController: UIViewController {
     
+    // Your view controller wouldn't make any sense if the view model was nil...
+    // Have a think about how you could make it non-optional
+    //
+    // private let loginViewModel: LoginViewModel
     var loginViewModel: LoginViewModel?
     
     override func viewDidLoad() {
@@ -15,6 +19,7 @@ class LoginViewController: UIViewController {
         view.accessibilityIdentifier = "Login"
         
         #if DEBUG
+        // This is really nice 🚀
         addDebugGestures()
         #endif
         
@@ -38,6 +43,9 @@ class LoginViewController: UIViewController {
     #endif
     
     private let logoView: UIImageView = {
+        // Xcode now has a compiler safe initialiser to UIImage, called `UIImage(resource:)`. It
+        // makes it impossible to delete assets from the project that are being used. Have a go
+        // at using it!
         let logo = UIImage(named: "moneybox")
         let view = UIImageView(image: logo)
         view.contentMode = .scaleAspectFit
@@ -46,6 +54,7 @@ class LoginViewController: UIViewController {
         return view
     }()
     
+    // I like the encapsulation with these properties
     private let emailLabel: UILabel = {
         let label = UILabel()
         label.text = "Email address"
@@ -59,6 +68,13 @@ class LoginViewController: UIViewController {
         let field = LoginTextField()
         field.setupTextField(type: .email)
         field.translatesAutoresizingMaskIntoConstraints = false
+        // No need to do anything around this, but think about using a localisable strings file
+        // in the future, which makes it easy to translate copy.
+        //
+        // I've never actually used a string catalog, but it seems like the preferred way to do
+        // this now
+        //
+        // https://developer.apple.com/documentation/xcode/localizing-and-varying-text-with-a-string-catalog
         field.accessibilityIdentifier = "Email login text field"
         return field
     }()

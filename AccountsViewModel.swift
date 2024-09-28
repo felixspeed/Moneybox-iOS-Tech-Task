@@ -19,6 +19,9 @@ class AccountsViewModel {
     }
     
     var greetingTitle: String {
+        // You could make this testable without having to use actual user defaults by injecting
+        // your `UserDefaultsHelper` protocol into your classes. That way you don't need to
+        // manipulate the user defaults in your unit tests, you can just use your test class
         if let name = UserDefaults.standard.getUser()?.firstName {
             return "Hello \(name)!"
         } else {

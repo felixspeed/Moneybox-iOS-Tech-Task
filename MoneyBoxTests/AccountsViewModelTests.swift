@@ -20,6 +20,16 @@ final class AccountsViewModelTests: XCTestCase {
     }
     
     func test_AccountsViewModel_getAccounts_success() throws {
+        // I know this helper method already exists (and it's similar to what we actually use in Moneybox,
+        // but when you're writing tests on your own it can be easier to have the json directly in your tests.
+        // Like this:
+        let data = """
+        {
+            "foo": "bar"
+        }
+        """.data(using: .utf8)!
+        // Do something with `data`, like giving it to your mock
+        
         StubData.read(file: "Accounts") { (result: Result<AccountResponse, Error>) in
             switch result {
             case .success(let success):
@@ -44,6 +54,7 @@ final class AccountsViewModelTests: XCTestCase {
     }
     
     func test_AccountsViewModel_greetingTitle_withUser() throws {
+        // See note about injecting user defaults into AccountsViewModel
         let userModel = UserDefaults.standard
         StubData.read(file: "LoginSucceed") { (result: Result<LoginResponse, Error>) in
             switch result {

@@ -5,6 +5,8 @@ protocol DetailCoordinatorDelegate: AnyObject {
     func delegateFinish(_ coordinator: DetailCoordinator)
 }
 
+// Generally it's good to have smaller self-contained classes, but it might be a little overkill
+// to have one coordinator per screen in this case - I'd collapse this into your accounts coordinator
 class DetailCoordinator: Coordinator {
     
     private let navigationController: UINavigationController

@@ -1,6 +1,7 @@
 import UIKit
 
 extension UIViewController {
+    // 🚀
     func displayError(_ error: String) {
         let errorView = UIAlertController(
             title: error,

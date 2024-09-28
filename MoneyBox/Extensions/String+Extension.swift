@@ -1,6 +1,7 @@
 import Foundation
 
 extension String {
+    // Nice!
     var asCurrency: String {
         if let value = Double(self) {
             let formatter = NumberFormatter()

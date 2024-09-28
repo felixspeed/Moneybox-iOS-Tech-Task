@@ -1,6 +1,12 @@
 import UIKit
 
 class CustomStackElement: UIControl {
+    
+    // In general it's best to keep properties immutable (using `let` instead of `var`)
+    // and with the lowest level of access control (i.e. `private` instead of `internal`,
+    // which is the default if you don't specify anything
+    //
+    // private let primaryLeft: String?
     var primaryLeft: String?
     var secondaryLeft: String?
     var primaryRight: String?
@@ -84,7 +90,12 @@ class CustomStackElement: UIControl {
     private func setupLayout() {
         guard let isButton else { return }
         
+        // Could you achieve the same layout with UIStackView?
+        // If you can, it would be much better for readability and maintainability of the code
+        
         NSLayoutConstraint.activate([
+            // Fixed height elements are a nightmare, since users font could be any size. Try increasing
+            // the font on your phone and take a look through the app :)
             self.heightAnchor.constraint(equalToConstant: 35),
             primaryLeftLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
         ])

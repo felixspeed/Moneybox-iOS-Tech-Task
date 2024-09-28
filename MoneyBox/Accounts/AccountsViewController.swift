@@ -126,6 +126,12 @@ class AccountsViewController: UIViewController {
 
 
 extension AccountsViewController {
+    // This tends to be something that your coordinator would be responsible for. You want
+    // your view to be as stupid as possible. Data flow should be something like:
+    // * User does something
+    // * View tells view model "this thing happened"
+    // * If navigation is required, the view model passes that to the coordinator
+    // * The coordinator performs navigation
     @objc func logoutButtonTapped() {
         let alert = UIAlertController(
             title: "Are you sure you want to log out?",

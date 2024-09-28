@@ -5,6 +5,8 @@ import Foundation
 
 class LoginViewModel {
     
+    // There should be a single strong reference to a coordinator or delegate
+    // hint: and it shouldn't be here :)
     var coordinator: LoginCoordinator?
     var viewDelegate: LoginViewControllerDelegate?
     

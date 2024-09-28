@@ -4,6 +4,9 @@ protocol CustomStackDelegate: AnyObject {
     func elementTapped(withTag: Int)
 }
 
+// This is a nice idea, but might be a little too generic to be useful - in a big project
+// this kind of view is going to blow up to be massive. You can't cater for everything, probably
+// your detail/accounts views could/should be different
 class CustomStack: UIStackView {
     
     var title: String?
@@ -21,6 +24,7 @@ class CustomStack: UIStackView {
         setupStack()
     }
     
+    // What is the purpose of `lazy`? Is it doing anything here?
     lazy private var titleLabel: UILabel = {
         let label = UILabel()
         label.text = title
@@ -67,6 +71,11 @@ extension CustomStack {
             addArrangedSubview(element)
         }
         for button in buttons {
+            // Be very careful when you're indicating that something is a button when it isn't actually a button.
+            // Accessibility features (for e.g. Voiceover) won't tell the user it's tappable, so those users won't
+            // know about it
+            //
+            // This looks like a decent tutorial -  https://www.kodeco.com/6827616-ios-accessibility-getting-started
             button.addTarget(self, action: #selector(elementTapped), for: .touchUpInside)
             button.translatesAutoresizingMaskIntoConstraints = false
             addArrangedSubview(button)
